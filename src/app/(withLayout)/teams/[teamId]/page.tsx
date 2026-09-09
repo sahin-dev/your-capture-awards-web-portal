@@ -144,9 +144,12 @@ export default function TeamDetailPage() {
     data: membersResp,
     isLoading: isMembersLoading,
     isError: isMembersError,
-  } = useGetTeamMembersQuery({ teamId: teamId ?? '', page: memberPage, limit: 10 }, {
-    skip: !teamId,
-  });
+  } = useGetTeamMembersQuery(
+    { teamId: teamId ?? '', page: memberPage, limit: 10 },
+    {
+      skip: !teamId,
+    },
+  );
 
   const [joinTeam, { isLoading: isJoining }] = useJoinTeamMutation();
   const [switchTeam, { isLoading: isSwitching }] = useSwitchTeamMutation();
@@ -161,8 +164,8 @@ export default function TeamDetailPage() {
 
   const userLevelOrder = progressData?.data?.currentStatus?.order ?? 0;
   const requiredLevelOrder =
-    levelsData?.data?.find((level) => level.levelName === resolvedTeam?.min_requirement_str)?.order ??
-    0;
+    levelsData?.data?.find((level) => level.levelName === resolvedTeam?.min_requirement_str)
+      ?.order ?? 0;
 
   const isJoined =
     user?.joinedTeam?.teamId === resolvedTeam?.id ||
@@ -269,7 +272,11 @@ export default function TeamDetailPage() {
               <div className="flex min-w-0 flex-1 flex-col gap-4 sm:flex-row sm:items-start">
                 <div className="border-border bg-surface-secondary relative size-28 shrink-0 overflow-hidden rounded-full border-4 sm:size-32 lg:size-36">
                   {resolvedTeam.badge ? (
-                    <img src={resolvedTeam.badge} alt={resolvedTeam.name} className="size-full object-cover" />
+                    <img
+                      src={resolvedTeam.badge}
+                      alt={resolvedTeam.name}
+                      className="size-full object-cover"
+                    />
                   ) : (
                     <div className="bg-primary text-primary-foreground flex size-full items-center justify-center text-2xl font-bold">
                       {resolvedTeam.name.slice(0, 2).toUpperCase()}
@@ -440,11 +447,21 @@ export default function TeamDetailPage() {
           </div>
           {memberMeta && memberMeta.totalPage > 1 && (
             <div className="border-border flex items-center justify-between border-t px-5 py-4 sm:px-6">
-              <Button variant="outline" disabled={memberPage <= 1} onClick={() => setMemberPage((page) => page - 1)}>
+              <Button
+                variant="outline"
+                disabled={memberPage <= 1}
+                onClick={() => setMemberPage((page) => page - 1)}
+              >
                 Previous
               </Button>
-              <span className="text-muted-foreground text-sm">Page {memberPage} of {memberMeta.totalPage}</span>
-              <Button variant="outline" disabled={memberPage >= memberMeta.totalPage} onClick={() => setMemberPage((page) => page + 1)}>
+              <span className="text-muted-foreground text-sm">
+                Page {memberPage} of {memberMeta.totalPage}
+              </span>
+              <Button
+                variant="outline"
+                disabled={memberPage >= memberMeta.totalPage}
+                onClick={() => setMemberPage((page) => page + 1)}
+              >
                 Next
               </Button>
             </div>

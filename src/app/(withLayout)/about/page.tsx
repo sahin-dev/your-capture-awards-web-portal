@@ -68,7 +68,7 @@ export default function AboutPage() {
     <main className="margin overflow-hidden">
       <section className="border-border relative min-h-[calc(100dvh-59px)] border-b">
         <Image
-          src="/images/POTY.png"
+          src="/images/poty.jpg"
           alt="Award-winning photography moment"
           fill
           priority
@@ -156,7 +156,7 @@ export default function AboutPage() {
         <div className="container grid gap-10 py-16 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:py-24">
           <div className="border-border relative min-h-[360px] overflow-hidden rounded-lg border sm:min-h-[520px]">
             <Image
-              src="/images/studio.png"
+              src="/images/studio.jpg"
               alt="Photography workspace"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

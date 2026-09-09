@@ -38,7 +38,7 @@ const About = () => {
 
             <div className="media-zoom ring-border-subtle relative aspect-[4/5] w-full overflow-hidden rounded-2xl ring-1">
               <Image
-                src="/images/photographer.png"
+                src="/images/portrait.jpg"
                 alt="A photographer at work"
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
@@ -93,7 +93,7 @@ const About = () => {
             <Reveal direction="left" delay={480} className="mt-10">
               <div className="media-zoom ring-border-subtle relative aspect-[16/9] w-full overflow-hidden rounded-2xl ring-1">
                 <Image
-                  src="/images/studio.png"
+                  src="/images/studio.jpg"
                   alt="Inside the studio"
                   fill
                   sizes="(min-width: 1024px) 45vw, 100vw"

@@ -63,16 +63,22 @@ export default function TeamPage() {
     data: membersData,
     isLoading: isMembersLoading,
     isError: isMembersError,
-  } = useGetTeamMembersQuery({ teamId: team?.id || '', page: memberPage, limit: 10 }, {
-    skip: !team?.id,
-  });
-  const { data: requestsData } = useGetPendingRequestsQuery({
-    teamId: team?.id || '',
-    page: requestPage,
-    limit: 10,
-  }, {
-    skip: !team?.id || !isMod,
-  });
+  } = useGetTeamMembersQuery(
+    { teamId: team?.id || '', page: memberPage, limit: 10 },
+    {
+      skip: !team?.id,
+    },
+  );
+  const { data: requestsData } = useGetPendingRequestsQuery(
+    {
+      teamId: team?.id || '',
+      page: requestPage,
+      limit: 10,
+    },
+    {
+      skip: !team?.id || !isMod,
+    },
+  );
 
   const [approveRequest] = useApproveJoinRequestMutation();
   const [rejectRequest] = useRejectJoinRequestMutation();

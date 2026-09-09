@@ -20,7 +20,7 @@ const Banner = () => {
       {/* Photograph, drifting slowly so the hero never sits completely still */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/banner.png"
+          src="/images/hero.jpg"
           alt=""
           fill
           priority

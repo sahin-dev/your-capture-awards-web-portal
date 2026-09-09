@@ -117,11 +117,23 @@ function MemberList({
       </div>
       {totalPage > 1 && (
         <div className="flex items-center justify-between border-t px-4 py-3 sm:px-5">
-          <Button variant="outline" size="sm" disabled={page <= 1} onClick={() => onPageChange(page - 1)}>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={page <= 1}
+            onClick={() => onPageChange(page - 1)}
+          >
             Previous
           </Button>
-          <span className="text-muted-foreground text-xs">Page {page} of {totalPage}</span>
-          <Button variant="outline" size="sm" disabled={page >= totalPage} onClick={() => onPageChange(page + 1)}>
+          <span className="text-muted-foreground text-xs">
+            Page {page} of {totalPage}
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={page >= totalPage}
+            onClick={() => onPageChange(page + 1)}
+          >
             Next
           </Button>
         </div>

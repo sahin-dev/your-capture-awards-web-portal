@@ -34,19 +34,26 @@ const RulesTab = ({ contest, value }: { contest: any; value: string }) => {
         .map((rule: any) => {
           const Icon = RULE_ICONS[rule?.icon] ?? BadgeCheck;
           return (
-            <article key={rule?.key ?? rule?.id ?? rule?.name} className="border-border bg-surface flex gap-4 rounded-lg border p-5 sm:gap-5 sm:p-8">
+            <article
+              key={rule?.key ?? rule?.id ?? rule?.name}
+              className="border-border bg-surface flex gap-4 rounded-lg border p-5 sm:gap-5 sm:p-8"
+            >
               <div className="border-border bg-surface-secondary flex size-12 shrink-0 items-center justify-center rounded-lg border sm:size-14">
                 <Icon className="text-primary size-5 sm:size-6" />
               </div>
               <div className="min-w-0 space-y-1">
                 <h3 className="text-lg font-medium sm:text-xl">{rule?.label ?? rule?.name}</h3>
-                <p className="text-muted-foreground whitespace-pre-line leading-relaxed">{rule?.description ?? 'No details available.'}</p>
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {rule?.description ?? 'No details available.'}
+                </p>
               </div>
             </article>
           );
         })}
       {!contest?.rules?.length && (
-        <p className="text-muted-foreground py-12 text-center">No contest rules have been added yet.</p>
+        <p className="text-muted-foreground py-12 text-center">
+          No contest rules have been added yet.
+        </p>
       )}
     </TabsContent>
   );

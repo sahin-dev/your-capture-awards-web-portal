@@ -2,10 +2,7 @@
 
 import { useAuth } from '@/hooks/useAuth';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
-import {
-  useLazyGetFollowersQuery,
-  useToggleFollowMutation,
-} from '@/store/apis/socialApi';
+import { useLazyGetFollowersQuery, useToggleFollowMutation } from '@/store/apis/socialApi';
 import { cn } from '@/utils/cn';
 import { Loader2, MapPin } from 'lucide-react';
 import Image from 'next/image';

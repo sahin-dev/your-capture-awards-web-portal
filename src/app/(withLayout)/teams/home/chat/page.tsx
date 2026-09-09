@@ -731,9 +731,7 @@ export default function TeamChatPage() {
                                   </>
                                 )}
                                 {message.message && (
-                                  <p className="text-foreground/85 text-sm">
-                                    {message.message}
-                                  </p>
+                                  <p className="text-foreground/85 text-sm">{message.message}</p>
                                 )}
                               </div>
                             ) : (

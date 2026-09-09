@@ -163,9 +163,12 @@ export function PublicProfilePage({ isOwn = false, userId }: Props) {
     data: ownPhotosData,
     isLoading: isOwnPhotosLoading,
     isFetching: isOwnPhotosFetching,
-  } = useGetPhotosQuery({ page: photoPage, limit: 20 }, {
-    skip: !isOwn,
-  });
+  } = useGetPhotosQuery(
+    { page: photoPage, limit: 20 },
+    {
+      skip: !isOwn,
+    },
+  );
 
   // 2. Fetch Profile, Stats and Photos for Other User Profile
   const {
@@ -231,14 +234,14 @@ export function PublicProfilePage({ isOwn = false, userId }: Props) {
     !isOwn &&
     Boolean(
       (currentUserId && userId === currentUserId) ||
-        (currentUsername && userId === currentUsername),
+      (currentUsername && userId === currentUsername),
     );
   const isCurrentUserProfile =
     isOwn ||
     isRouteCurrentUser ||
     Boolean(
       (currentUserId && profileUserId && currentUserId === profileUserId) ||
-        (currentUsername && profileUsername && currentUsername === profileUsername),
+      (currentUsername && profileUsername && currentUsername === profileUsername),
     );
 
   // Resolved joined team: for own profile from currentUser, for public from API data

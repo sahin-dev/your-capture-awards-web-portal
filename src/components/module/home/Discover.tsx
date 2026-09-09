@@ -10,7 +10,7 @@ const Discover = () => {
     <section id="discover" className="relative overflow-hidden py-24 lg:py-32">
       {/* Backdrop photograph, pushed well back so the cards stay legible */}
       <div className="absolute inset-0 -z-10" aria-hidden="true">
-        <Image alt="" src="/images/skills.png" fill className="object-cover opacity-30" />
+        <Image alt="" src="/images/backdrop.jpg" fill className="object-cover opacity-30" />
         <div className="from-background via-background/85 to-background absolute inset-0 bg-gradient-to-b" />
       </div>
 

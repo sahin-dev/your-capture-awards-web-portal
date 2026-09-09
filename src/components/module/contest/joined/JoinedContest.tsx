@@ -55,13 +55,16 @@ const JoinedContest = () => {
   });
 
   const userProgress = progressData?.data ?? null;
-  const allLevels = userProgress?.levels?.map((level) => ({
-    id: `progress-${level.order}`,
-    level: level.order,
-    levelName: level.name,
-    order: level.order,
-    requirements: level.requirements,
-  })) ?? levelsData?.data ?? [];
+  const allLevels =
+    userProgress?.levels?.map((level) => ({
+      id: `progress-${level.order}`,
+      level: level.order,
+      levelName: level.name,
+      order: level.order,
+      requirements: level.requirements,
+    })) ??
+    levelsData?.data ??
+    [];
   const currentLevelOrder = userProgress?.currentStatus?.order ?? null;
 
   const { data, isLoading, isFetching, refetch, isError, error } = useGetJoinedContestQuery(
@@ -244,7 +247,6 @@ const JoinedContest = () => {
                   </div>
                 </div>
               </div>
-          
             </div>
 
             <div className="border-border-subtle flex items-center justify-center gap-10 border-t-[0.5px] pt-5">

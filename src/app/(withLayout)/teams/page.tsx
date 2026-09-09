@@ -31,7 +31,7 @@ import { getErrorMessage, showErrorToast } from '@/utils/team-feedback';
 
 const PAGE_SIZE = 8;
 const FEATURED_LIMIT = 8;
-const TEAM_BANNER_PLACEHOLDER = '/images/TeamPhoto.png';
+const TEAM_BANNER_PLACEHOLDER = '/images/team.jpg';
 
 const EMPTY_META: PaginationMeta = {
   page: 1,
@@ -272,7 +272,6 @@ function TeamCardSkeleton() {
 // }
 
 function MoreTeamCard({ team }: { team: TeamListItem }) {
-  
   return (
     <article className="border-border rounded-xl border p-4 transition duration-200">
       <div className="flex items-start gap-3">
@@ -365,8 +364,6 @@ export default function Team() {
     { skip: skipListing },
   );
 
- 
-
   const suggestedQuery = useGetSuggestedTeamsQuery(
     {
       page: 1,
@@ -374,8 +371,6 @@ export default function Team() {
     },
     { skip: skipListing },
   );
-
-
 
   const teams = teamsQuery.data?.data ?? [];
   const suggestedTeams = suggestedQuery.data?.data ?? [];
@@ -502,7 +497,12 @@ export default function Team() {
               {teamsQuery.isError && (
                 <div className="mt-3 text-center">
                   <p className="text-destructive text-sm">Could not load more teams.</p>
-                  <Button variant="outline" size="sm" className="mt-2" onClick={() => teamsQuery.refetch()}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="mt-2"
+                    onClick={() => teamsQuery.refetch()}
+                  >
                     Try again
                   </Button>
                 </div>

@@ -39,7 +39,7 @@ function MatchCard({
       teamMembersLabel = `${match.teamsJoined} Participated`;
     }
   }
-  const banner = match.teamA.badge || '/images/TeamPhoto.png';
+  const banner = match.teamA.badge || '/images/team.jpg';
   const startDate = new Date(match.endsAt.getTime() - 1000 * 60 * 60 * 24 * 30).toISOString();
   const endDate = match.endsAt.toISOString();
   const buttonLabel = match.queueStatus
@@ -80,8 +80,10 @@ function MatchCard({
 
         {match.queueStatus && (
           <div className="absolute top-14 left-3 z-10">
-            <div className="bg-black/45 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm">
-              <StatusIcon className={cn('size-3', match.queueStatus === 'SEARCHING' && 'animate-pulse')} />
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-black/45 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm">
+              <StatusIcon
+                className={cn('size-3', match.queueStatus === 'SEARCHING' && 'animate-pulse')}
+              />
               {match.queueStatus === 'WAITING_FOR_MEMBERS' ? 'Waiting for members' : 'Searching'}
             </div>
           </div>

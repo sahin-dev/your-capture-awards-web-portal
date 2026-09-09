@@ -186,7 +186,7 @@ const CompletedContestCard = ({ contest }: { contest: any }) => {
               e.stopPropagation();
               router.push(`/profile/${contest.bannerUploader.id}`);
             }}
-            className="absolute top-3 right-3 max-w-[60%] truncate rounded-md bg-black/60 px-2 py-1 text-[10px] font-medium text-white backdrop-blur-sm hover:text-primary"
+            className="hover:text-primary absolute top-3 right-3 max-w-[60%] truncate rounded-md bg-black/60 px-2 py-1 text-[10px] font-medium text-white backdrop-blur-sm"
           >
             📷 {contest.bannerUploader.fullName}
           </button>

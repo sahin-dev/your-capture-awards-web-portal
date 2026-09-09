@@ -163,10 +163,14 @@ const CoinCard = ({
           {offer.title}
         </p>
         <div className="flex items-center gap-1">
-          <Image src="/icons/ycw-coin.png" alt="YCW Coin" width={18} height={18} className="object-contain" />
-          <span className="text-foreground text-lg font-semibold">
-            {offer.quantity ?? 0}
-          </span>
+          <Image
+            src="/icons/ycw-coin.png"
+            alt="YCW Coin"
+            width={18}
+            height={18}
+            className="object-contain"
+          />
+          <span className="text-foreground text-lg font-semibold">{offer.quantity ?? 0}</span>
         </div>
       </div>
 
@@ -212,7 +216,13 @@ const BundleCard = ({
         disabled={isPurchasing}
         className="bg-primary/90 text-primary-foreground hover:bg-primary mt-2 flex w-full items-center justify-center gap-1 rounded-sm py-1.5 text-xs font-bold transition-colors duration-150 disabled:opacity-50"
       >
-        <Image src="/icons/ycw-coin.png" alt="YCW Coin" width={12} height={12} className="object-contain" />
+        <Image
+          src="/icons/ycw-coin.png"
+          alt="YCW Coin"
+          width={12}
+          height={12}
+          className="object-contain"
+        />
         {bundle.amount} YCW Coin
       </button>
     </div>
@@ -222,9 +232,7 @@ const BundleCard = ({
 /* ─── Section Header ──────────────────────────────────────────────── */
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle: string }) => (
   <div className="mb-4">
-    <h3 className="text-foreground text-center text-xl font-bold tracking-tight">
-      {title}
-    </h3>
+    <h3 className="text-foreground text-center text-xl font-bold tracking-tight">{title}</h3>
     <p className="text-muted-foreground text-center text-xs">{subtitle}</p>
   </div>
 );
@@ -407,7 +415,10 @@ const StoreModal = () => {
 
           {/* ── Coins Section ── */}
           <section className="mb-6">
-            <SectionHeader title="YCW Coin" subtitle="Buy YCW Coin to participate in flash challenges" />
+            <SectionHeader
+              title="YCW Coin"
+              subtitle="Buy YCW Coin to participate in flash challenges"
+            />
 
             {productsLoading ? (
               <div className="flex gap-3 overflow-x-auto pb-2">

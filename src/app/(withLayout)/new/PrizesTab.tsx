@@ -1,5 +1,5 @@
-import { cn } from "@/utils/cn";
-import { Camera, Coins, Gift, Image, LucideIcon, Medal, Search, Star, Zap } from "lucide-react";
+import { cn } from '@/utils/cn';
+import { Camera, Coins, Gift, Image, LucideIcon, Medal, Search, Star, Zap } from 'lucide-react';
 
 const PRIZES = [
   {
@@ -53,13 +53,11 @@ function PrizeCard({ prize }: { prize: (typeof PRIZES)[number] }) {
 
   return (
     <div className="border-border bg-surface flex items-center gap-5 rounded-lg border p-8">
-      <div
-        className={cn('flex size-20 shrink-0 items-center justify-center rounded-lg', prize.bg)}
-      >
+      <div className={cn('flex size-20 shrink-0 items-center justify-center rounded-lg', prize.bg)}>
         <Icon className={cn('h-5 w-5', prize.fg)} aria-hidden="true" />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="truncate leading-snug text-xl font-medium">{prize.title}</p>
+        <p className="truncate text-xl leading-snug font-medium">{prize.title}</p>
         <div className="text-muted-foreground mt-3 flex items-center gap-3">
           {prize.stats.map((stat, i) => {
             const StatIcon = PRIZE_ICONS[stat.icon];

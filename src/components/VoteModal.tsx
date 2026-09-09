@@ -48,7 +48,11 @@ const VOTING_POWER_ICON_STEPS = [2, 4, 6, 8, 10, 12, 14, 16, 18];
 //      stamp still renders something reasonable — and warn in dev so a real
 //      mismatch (e.g. voting power above 18, or off the 2-step scale) is
 //      visible instead of silently showing the wrong badge.
-const resolveVotingPowerIcon = (power: number, levels?: UserProgress['levels'], currentOrder?: number) => {
+const resolveVotingPowerIcon = (
+  power: number,
+  levels?: UserProgress['levels'],
+  currentOrder?: number,
+) => {
   const numericPower = Number(power);
 
   if (VOTING_POWER_ICON_STEPS.includes(numericPower)) {
@@ -61,9 +65,11 @@ const resolveVotingPowerIcon = (power: number, levels?: UserProgress['levels'], 
   }
 
   const normalized = Math.max(2, Math.min(18, numericPower || 0));
-  const closest = VOTING_POWER_ICON_STEPS.reduce((best, current) =>
-    Math.abs(current - normalized) < Math.abs(best - normalized) ? current : best,
-  VOTING_POWER_ICON_STEPS[0]);
+  const closest = VOTING_POWER_ICON_STEPS.reduce(
+    (best, current) =>
+      Math.abs(current - normalized) < Math.abs(best - normalized) ? current : best,
+    VOTING_POWER_ICON_STEPS[0],
+  );
 
   if (process.env.NODE_ENV !== 'production') {
     console.warn(
@@ -94,9 +100,7 @@ const VoteModal = forwardRef<VoteModalRef, VoteModalProps>(({ id }, ref) => {
   const [voteUpload, { isLoading: voteLoading }] = useCreateVoteMutation();
   const { data: userProgressData } = useGetUserProgressQuery(undefined, { skip: false });
 
-  const userVotingPower =
-    userProgressData?.data?.currentStatus?.votingPower ??
-    0;
+  const userVotingPower = userProgressData?.data?.currentStatus?.votingPower ?? 0;
   const votingPowerIcon = resolveVotingPowerIcon(
     userVotingPower,
     userProgressData?.data?.levels,

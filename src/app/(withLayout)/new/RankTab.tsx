@@ -238,7 +238,7 @@ export function RankTab() {
 
   return (
     <div className="">
-      <div className="bg-background border-border sticky top-14 z-20 pt-2.5 mb-6 flex gap-6 border-b">
+      <div className="bg-background border-border sticky top-14 z-20 mb-6 flex gap-6 border-b pt-2.5">
         {RANK_SUB_TABS.map((t) => {
           const active = subTab === t.id;
           return (
@@ -363,7 +363,7 @@ function PhotographerLevelRanks() {
             <div
               key={level}
               ref={(node) => {
-                sectionRefs.current[level] = node ;
+                sectionRefs.current[level] = node;
               }}
               data-level={level}
               className="flex flex-col gap-3 pt-32"

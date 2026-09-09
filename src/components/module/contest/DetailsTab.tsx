@@ -102,7 +102,10 @@ const DetailsTab = ({ contest, value }: { contest: any; value: string }) => {
             <span className="text-primary font-bold">{contest?.title}</span> challenge
           </h1>
           {contest?.description ? (
-            <TipTapViewer content={contest.description} className="text-muted-foreground leading-relaxed" />
+            <TipTapViewer
+              content={contest.description}
+              className="text-muted-foreground leading-relaxed"
+            />
           ) : (
             <p className="text-muted-foreground">No contest description has been added yet.</p>
           )}

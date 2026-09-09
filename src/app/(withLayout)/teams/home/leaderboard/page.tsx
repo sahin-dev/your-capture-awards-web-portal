@@ -83,8 +83,8 @@ function RewardsSummary({ period }: { period: LeaderboardPeriod }) {
           ))}
         </div>
         <p className="text-muted-foreground mt-2 text-xs">
-          Estimated based on the current standing — nothing is awarded until this {periodNoun}{' '}
-          ends, and rankings can still change.
+          Estimated based on the current standing — nothing is awarded until this {periodNoun} ends,
+          and rankings can still change.
         </p>
       </div>
     </div>

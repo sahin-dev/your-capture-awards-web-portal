@@ -33,7 +33,12 @@ function linkifyMessage(message: string, links: EntityLink[]): React.ReactNode {
     if (!match) return part;
 
     return (
-      <Link key={`${index}-${match.href}`} href={match.href} onClick={stopPropagation} className={inlineLinkClass}>
+      <Link
+        key={`${index}-${match.href}`}
+        href={match.href}
+        onClick={stopPropagation}
+        className={inlineLinkClass}
+      >
         {part}
       </Link>
     );
@@ -50,7 +55,8 @@ function getEntityLinks(notification: NotificationItem): EntityLink[] {
   const event = typeof data?.event === 'string' ? data.event : undefined;
   if (!event) return [];
 
-  const str = (key: string) => (typeof data?.[key] === 'string' ? (data[key] as string) : undefined);
+  const str = (key: string) =>
+    typeof data?.[key] === 'string' ? (data[key] as string) : undefined;
 
   switch (event) {
     case 'ACHIEVEMENT_UNLOCKED': {
@@ -104,7 +110,11 @@ export default function NotificationMessage({ notification }: { notification: No
       return (
         <p className="text-muted-foreground mt-0.5 text-xs">
           {voterId ? (
-            <Link href={`/profile/${voterId}`} onClick={stopPropagation} className={inlineLinkClass}>
+            <Link
+              href={`/profile/${voterId}`}
+              onClick={stopPropagation}
+              className={inlineLinkClass}
+            >
               {voterName}
             </Link>
           ) : (

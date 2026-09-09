@@ -81,7 +81,9 @@ export function DetailsTab() {
         </div>
 
         <div className="flex-1 space-y-3">
-          <h2 className="text-xl "><span className='text-primary font-bold'>SuperStar photographer</span> challenge</h2>
+          <h2 className="text-xl">
+            <span className="text-primary font-bold">SuperStar photographer</span> challenge
+          </h2>
           <p className="text-muted-foreground leading-relaxed">
             Are you the next SuperStar photographer? Ready to push your creative limits to the max
             in this fresh open themed, action-packed challenge! Earn the top photographer position

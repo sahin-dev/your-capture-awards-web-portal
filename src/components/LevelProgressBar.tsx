@@ -139,7 +139,7 @@ export function LevelProgressBar({
             const reqText = nextLevel ? (
               <div className="w-56 space-y-2 text-left sm:w-72">
                 <div className="border-border-subtle flex items-center justify-between border-b pb-2">
-                  <div className="text-foreground text-xs font-extrabold tracking-wide truncate">
+                  <div className="text-foreground truncate text-xs font-extrabold tracking-wide">
                     {nextLevel.levelName}
                   </div>
                   <span className="bg-surface-tertiary rounded-full px-2 py-1 text-[8px] font-bold tracking-wider uppercase">
@@ -162,13 +162,20 @@ export function LevelProgressBar({
                       100,
                       Math.max(0, apiPercent && apiPercent > 0 ? apiPercent : calculatedPercent),
                     );
-                    const complete = req.satisfied === true || current >= req.required || requirementPercent >= 100;
+                    const complete =
+                      req.satisfied === true ||
+                      current >= req.required ||
+                      requirementPercent >= 100;
                     const displayCurrent = current;
                     const displayPercent = requirementPercent;
-                    const readablePercent = displayPercent > 0 && displayPercent < 0.1 ? 0.1 : displayPercent;
+                    const readablePercent =
+                      displayPercent > 0 && displayPercent < 0.1 ? 0.1 : displayPercent;
 
                     return (
-                      <div key={`${label}-${requirementIndex}-${itemIndex}`} className="flex items-start gap-2 py-1">
+                      <div
+                        key={`${label}-${requirementIndex}-${itemIndex}`}
+                        className="flex items-start gap-2 py-1"
+                      >
                         <span
                           className={cn(
                             'mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border',
@@ -189,7 +196,9 @@ export function LevelProgressBar({
                             {label}
                           </div>
                           <div className="mt-0.5 flex items-center justify-between gap-2 text-[9px]">
-                            <span className={complete ? 'text-foreground/70' : 'text-muted-foreground'}>
+                            <span
+                              className={complete ? 'text-foreground/70' : 'text-muted-foreground'}
+                            >
                               {displayCurrent} / {req.required}
                             </span>
                             <span className="text-muted-foreground">
@@ -197,7 +206,10 @@ export function LevelProgressBar({
                             </span>
                           </div>
                           <div className="bg-surface-tertiary mt-1 h-1 w-full overflow-hidden rounded-full">
-                            <div className="bg-primary h-full rounded-full transition-all" style={{ width: `${readablePercent}%` }} />
+                            <div
+                              className="bg-primary h-full rounded-full transition-all"
+                              style={{ width: `${readablePercent}%` }}
+                            />
                           </div>
                         </div>
                       </div>
@@ -205,7 +217,9 @@ export function LevelProgressBar({
                   });
                 })}
               </div>
-            ) : '';
+            ) : (
+              ''
+            );
 
             return (
               <div
@@ -265,7 +279,8 @@ export function LevelProgressBar({
             style={{
               top: tooltipPos.top,
               left: tooltipPos.left,
-              transform: tooltipPlacement === 'top' ? 'translate(-50%, -100%)' : 'translate(-50%, 0)',
+              transform:
+                tooltipPlacement === 'top' ? 'translate(-50%, -100%)' : 'translate(-50%, 0)',
               zIndex: 9999,
             }}
           >

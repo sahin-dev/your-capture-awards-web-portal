@@ -39,7 +39,7 @@ export function RulesTab() {
             <IconPlaceholder name={rule.icon} size="sm" />
           </div>
           <div className="space-y-1">
-            <p className="font-medium text-xl">{rule.title}</p>
+            <p className="text-xl font-medium">{rule.title}</p>
             <p className="text-muted-foreground leading-relaxed">{rule.description}</p>
           </div>
         </div>

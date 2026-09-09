@@ -193,89 +193,93 @@ export default function NotificationModal() {
               const isClickable = !notification.isRead;
 
               return (
-              <div
-                key={notification.id}
-                role={isClickable ? 'button' : undefined}
-                tabIndex={isClickable ? 0 : undefined}
-                onClick={isClickable ? () => void handleNotificationClick(notification) : undefined}
-                onKeyDown={(event) => {
-                  if (!isClickable || (event.key !== 'Enter' && event.key !== ' ')) return;
-                  event.preventDefault();
-                  void handleNotificationClick(notification);
-                }}
-                className={cn(
-                  'relative flex items-start gap-3 rounded-xl border p-3 transition',
-                  notification.isRead ? 'border-border bg-background' : 'border-primary/20 bg-primary/5',
-                  isClickable && 'cursor-pointer',
-                )}
-              >
                 <div
+                  key={notification.id}
+                  role={isClickable ? 'button' : undefined}
+                  tabIndex={isClickable ? 0 : undefined}
+                  onClick={
+                    isClickable ? () => void handleNotificationClick(notification) : undefined
+                  }
+                  onKeyDown={(event) => {
+                    if (!isClickable || (event.key !== 'Enter' && event.key !== ' ')) return;
+                    event.preventDefault();
+                    void handleNotificationClick(notification);
+                  }}
                   className={cn(
-                    'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold',
+                    'relative flex items-start gap-3 rounded-xl border p-3 transition',
                     notification.isRead
-                      ? 'bg-surface-secondary text-foreground'
-                      : 'bg-primary text-primary-foreground',
+                      ? 'border-border bg-background'
+                      : 'border-primary/20 bg-primary/5',
+                    isClickable && 'cursor-pointer',
                   )}
                 >
-                  {typeLabel[notification.type].slice(0, 1)}
-                </div>
-
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-semibold">{notification.title}</p>
-                      <NotificationMessage notification={notification} />
-                    </div>
-                    {!notification.isRead && (
-                      <span className="bg-primary mt-1 size-2 shrink-0 rounded-full" />
+                  <div
+                    className={cn(
+                      'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold',
+                      notification.isRead
+                        ? 'bg-surface-secondary text-foreground'
+                        : 'bg-primary text-primary-foreground',
                     )}
+                  >
+                    {typeLabel[notification.type].slice(0, 1)}
                   </div>
-                  <div className="text-muted-foreground mt-2 flex items-center justify-between text-[11px]">
-                    <span>{typeLabel[notification.type]}</span>
-                    <span>{formatRelative(notification.createdAt)}</span>
-                  </div>
-                  {notification.type === NotificationType.INVITATION && (
-                    <div className="mt-3 flex gap-2">
-                      {handledInvitations[notification.id] ||
-                      notification.data?.invitationStatus ? (
-                        <span className="border-border bg-surface-secondary text-muted-foreground inline-flex h-8 items-center rounded-md border px-3 text-xs font-medium capitalize">
-                          {handledInvitations[notification.id] ||
-                            notification.data?.invitationStatus}
-                        </span>
-                      ) : (
-                        <>
-                          <button
-                            type="button"
-                            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-8 items-center justify-center rounded-md px-3 text-xs font-medium transition disabled:cursor-not-allowed disabled:opacity-50"
-                            disabled={isHandlingInvitation}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              handleAcceptInvitation(notification);
-                            }}
-                          >
-                            {activeInvitationId === notification.id && isAcceptingInvitation
-                              ? 'Accepting...'
-                              : 'Accept'}
-                          </button>
-                          <button
-                            type="button"
-                            className="border-border bg-background hover:bg-accent inline-flex h-8 items-center justify-center rounded-md border px-3 text-xs font-medium transition"
-                            disabled={isHandlingInvitation}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              handleRejectInvitation(notification);
-                            }}
-                          >
-                            {activeInvitationId === notification.id && isRejectingInvitation
-                              ? 'Rejecting...'
-                              : 'Reject'}
-                          </button>
-                        </>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold">{notification.title}</p>
+                        <NotificationMessage notification={notification} />
+                      </div>
+                      {!notification.isRead && (
+                        <span className="bg-primary mt-1 size-2 shrink-0 rounded-full" />
                       )}
                     </div>
-                  )}
+                    <div className="text-muted-foreground mt-2 flex items-center justify-between text-[11px]">
+                      <span>{typeLabel[notification.type]}</span>
+                      <span>{formatRelative(notification.createdAt)}</span>
+                    </div>
+                    {notification.type === NotificationType.INVITATION && (
+                      <div className="mt-3 flex gap-2">
+                        {handledInvitations[notification.id] ||
+                        notification.data?.invitationStatus ? (
+                          <span className="border-border bg-surface-secondary text-muted-foreground inline-flex h-8 items-center rounded-md border px-3 text-xs font-medium capitalize">
+                            {handledInvitations[notification.id] ||
+                              notification.data?.invitationStatus}
+                          </span>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-8 items-center justify-center rounded-md px-3 text-xs font-medium transition disabled:cursor-not-allowed disabled:opacity-50"
+                              disabled={isHandlingInvitation}
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                handleAcceptInvitation(notification);
+                              }}
+                            >
+                              {activeInvitationId === notification.id && isAcceptingInvitation
+                                ? 'Accepting...'
+                                : 'Accept'}
+                            </button>
+                            <button
+                              type="button"
+                              className="border-border bg-background hover:bg-accent inline-flex h-8 items-center justify-center rounded-md border px-3 text-xs font-medium transition"
+                              disabled={isHandlingInvitation}
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                handleRejectInvitation(notification);
+                              }}
+                            >
+                              {activeInvitationId === notification.id && isRejectingInvitation
+                                ? 'Rejecting...'
+                                : 'Reject'}
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
               );
             })
           ) : (

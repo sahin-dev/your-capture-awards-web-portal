@@ -131,7 +131,7 @@ const ContestDetails = ({ id }: { id: string }) => {
         {contest?.bannerUploader?.fullName && (
           <Link
             href={`/profile/${contest.bannerUploader.id}`}
-            className="absolute right-3 bottom-3 z-10 max-w-[70%] truncate rounded-md bg-black/60 px-2.5 py-1.5 text-xs font-medium text-white backdrop-blur-sm hover:text-primary"
+            className="hover:text-primary absolute right-3 bottom-3 z-10 max-w-[70%] truncate rounded-md bg-black/60 px-2.5 py-1.5 text-xs font-medium text-white backdrop-blur-sm"
           >
             📷 {contest.bannerUploader.fullName}
           </Link>

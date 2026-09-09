@@ -20,15 +20,12 @@ export type ChargeContestExposurePayload = {
 
 const normalizeContestListResponse = (response: any) => {
   const payload = response?.data ?? response ?? {};
-  const contests = Array.isArray(payload) ? payload : payload?.contests ?? [];
+  const contests = Array.isArray(payload) ? payload : (payload?.contests ?? []);
   const meta = payload?.meta ?? response?.meta ?? {};
   const page = meta.page ?? 1;
   const limit = meta.limit ?? contests.length;
   const total = meta.total ?? contests.length;
-  const totalPage =
-    meta.totalPage ??
-    meta.totalPages ??
-    Math.ceil(total / Math.max(limit, 1));
+  const totalPage = meta.totalPage ?? meta.totalPages ?? Math.ceil(total / Math.max(limit, 1));
 
   return {
     data: contests,
@@ -252,7 +249,8 @@ export const contestApi = createApi({
         const page = meta.page ?? 1;
         const limit = meta.limit ?? participants.length;
         const total = meta.total ?? participants.length;
-        const totalPage = meta.totalPage ?? meta.totalPages ?? Math.ceil(total / Math.max(limit, 1));
+        const totalPage =
+          meta.totalPage ?? meta.totalPages ?? Math.ceil(total / Math.max(limit, 1));
 
         return {
           data: {

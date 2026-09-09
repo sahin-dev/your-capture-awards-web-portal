@@ -138,9 +138,7 @@ export default function AvatarDialog() {
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 <FiEdit2 className="text-foreground size-4 drop-shadow" />
-                <span className="text-foreground text-[9px] font-semibold drop-shadow">
-                  Edit
-                </span>
+                <span className="text-foreground text-[9px] font-semibold drop-shadow">Edit</span>
               </div>
             </>
           ) : (
@@ -214,7 +212,9 @@ export default function AvatarDialog() {
                         src={displaySrc}
                         alt="Photo preview"
                         fill
-                        unoptimized={displaySrc.startsWith('blob:') || displaySrc.startsWith('data:')}
+                        unoptimized={
+                          displaySrc.startsWith('blob:') || displaySrc.startsWith('data:')
+                        }
                         className="object-cover"
                       />
                       <div className="bg-overlay absolute inset-0 flex flex-col items-center justify-center gap-1.5 opacity-0 backdrop-blur-[2px] transition-opacity duration-200 group-hover/inner:opacity-100">

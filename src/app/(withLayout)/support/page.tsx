@@ -94,7 +94,7 @@ export default function SupportPage() {
     <main className="margin overflow-hidden">
       <section className="border-border relative border-b">
         <Image
-          src="/images/banner.png"
+          src="/images/hero.jpg"
           alt="Your Capture Awards support desk"
           fill
           priority

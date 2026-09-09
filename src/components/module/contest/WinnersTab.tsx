@@ -112,8 +112,8 @@ const WinnersTab = ({ contest, value }: { contest: any; value: string }) => {
         <span>|</span>
 
         <p className="flex items-center gap-1">
-          <Image src="/icons/ycw-coin.png" alt="Coins" width={16} height={16} className="size-4" />
-          x{prize.coin}
+          <Image src="/icons/ycw-coin.png" alt="Coins" width={16} height={16} className="size-4" />x
+          {prize.coin}
         </p>
       </div>
     );
@@ -220,9 +220,7 @@ const WinnersTab = ({ contest, value }: { contest: any; value: string }) => {
               {winner?.user?.fullName || 'Unknown User'}
             </h3>
 
-            <p className="text-muted-foreground leading-none">
-              {winner?.user?.location}
-            </p>
+            <p className="text-muted-foreground leading-none">{winner?.user?.location}</p>
           </div>
         </div>
 

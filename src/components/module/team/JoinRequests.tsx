@@ -28,7 +28,15 @@ interface JoinRequestsProps {
   onPageChange: (page: number) => void;
 }
 
-function JoinRequests({ requests, onAccept, onDecline, page, total, totalPage, onPageChange }: JoinRequestsProps) {
+function JoinRequests({
+  requests,
+  onAccept,
+  onDecline,
+  page,
+  total,
+  totalPage,
+  onPageChange,
+}: JoinRequestsProps) {
   return (
     <div className="overflow-hidden rounded-xl border">
       <div className="flex items-center justify-between border-b px-5 py-3.5">
@@ -75,11 +83,23 @@ function JoinRequests({ requests, onAccept, onDecline, page, total, totalPage, o
       </div>
       {totalPage > 1 && (
         <div className="flex items-center justify-between border-t px-5 py-3">
-          <Button variant="outline" size="sm" disabled={page <= 1} onClick={() => onPageChange(page - 1)}>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={page <= 1}
+            onClick={() => onPageChange(page - 1)}
+          >
             Previous
           </Button>
-          <span className="text-muted-foreground text-xs">Page {page} of {totalPage}</span>
-          <Button variant="outline" size="sm" disabled={page >= totalPage} onClick={() => onPageChange(page + 1)}>
+          <span className="text-muted-foreground text-xs">
+            Page {page} of {totalPage}
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={page >= totalPage}
+            onClick={() => onPageChange(page + 1)}
+          >
             Next
           </Button>
         </div>

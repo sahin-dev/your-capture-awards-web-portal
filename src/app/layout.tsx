@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: 'Your Capture Awards',
     images: [
       {
-        url: '/images/banner.png',
+        url: '/images/hero.jpg',
         width: 1200,
         height: 630,
         alt: 'Your Capture Awards',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Your Capture Awards',
     description: SITE_DESCRIPTION,
-    images: ['/images/banner.png'],
+    images: ['/images/hero.jpg'],
   },
   icons: {
     icon: '/icons/site-icon.png',

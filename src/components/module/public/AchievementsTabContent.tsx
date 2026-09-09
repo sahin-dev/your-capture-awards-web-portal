@@ -75,13 +75,16 @@ const AchievementsTabContent = ({ username, isOwn = false }: Props) => {
   );
 
   const userProgress = progressData?.data ?? null;
-  const allLevels = userProgress?.levels?.map((level) => ({
-    id: `progress-${level.order}`,
-    level: level.order,
-    levelName: level.name,
-    order: level.order,
-    requirements: level.requirements,
-  })) ?? levelsData?.data ?? [];
+  const allLevels =
+    userProgress?.levels?.map((level) => ({
+      id: `progress-${level.order}`,
+      level: level.order,
+      levelName: level.name,
+      order: level.order,
+      requirements: level.requirements,
+    })) ??
+    levelsData?.data ??
+    [];
   const currentLevelOrder = userProgress?.currentStatus?.order ?? null;
   const isLoading = isLevelsLoading || (isAuthenticated && isProgressLoading);
   const groups = achievementsData?.data?.groups ?? [];
@@ -264,7 +267,7 @@ function BadgeCell({
         {children}
       </button>
 
-      <div className="min-w-0 text-[10px] font-semibold uppercase tracking-[0.05em] text-foreground/90 line-clamp-2">
+      <div className="text-foreground/90 line-clamp-2 min-w-0 text-[10px] font-semibold tracking-[0.05em] uppercase">
         {title}
       </div>
 
@@ -297,16 +300,11 @@ function CardSection({ selected }: { selected: SelectedBadge }) {
     <section className="border-border bg-surface animate-fade-in space-y-4 rounded-xl border p-5">
       {/* Compact section title — keeps the original small header style */}
 
-        <h3 className="text-foreground text-sm font-bold tracking-wider uppercase">
-          {badge.title}
-        </h3>
-
+      <h3 className="text-foreground text-sm font-bold tracking-wider uppercase">{badge.title}</h3>
 
       {/* Card grid */}
       {badge.cards.length === 0 ? (
-        <div className="text-muted-foreground p-8 text-center text-sm">
-          No cards to show yet.
-        </div>
+        <div className="text-muted-foreground p-8 text-center text-sm">No cards to show yet.</div>
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {badge.cards.map((card) => (

@@ -185,7 +185,7 @@ function TradeHistoryPicker({
   }
 
   return (
-    <div className="grid max-h-64 grid-cols-3 gap-2 overflow-y-auto scrollbar-thin sm:grid-cols-4">
+    <div className="grid max-h-64 scrollbar-thin grid-cols-3 gap-2 overflow-y-auto sm:grid-cols-4">
       {photos.map((photo) => {
         const isSelected = selectedId === photo.id;
         return (
@@ -780,9 +780,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
                   </button>
                   <button
                     type="button"
-                    disabled={
-                      swapSource === 'computer' ? !replacementFile : !selectedUserPhotoId
-                    }
+                    disabled={swapSource === 'computer' ? !replacementFile : !selectedUserPhotoId}
                     onClick={selectTradeSource}
                     className="bg-primary text-primary-foreground rounded-sm px-5 py-2 text-sm disabled:opacity-60"
                   >
@@ -796,9 +794,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
             {step === 'selectTradeTarget' && actionType === 'trade' && (
               <div className="space-y-5">
                 <div className="space-y-2 text-center uppercase">
-                  <h1 className="text-lg font-semibold sm:text-xl">
-                    Select photo to replace
-                  </h1>
+                  <h1 className="text-lg font-semibold sm:text-xl">Select photo to replace</h1>
                   <p className="text-foreground/50 text-sm">
                     Choose one photo already uploaded to this contest
                   </p>

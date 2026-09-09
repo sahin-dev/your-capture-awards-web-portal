@@ -11,7 +11,7 @@ const teamDetails: TeamDetail[] = [
     name: "les ch'tis de France",
     description:
       "venez ici les chtis ou ceux qui aiment les hauts de France. Nous avons un rythme de trois challenges par jour. Si on n'arrive pas à avoir le turbo, on essaie au moins d'être là à la fin du match team pour voter. Bonne humeur et partage",
-    badge: '/images/TeamPhoto.png',
+    badge: '/images/team.jpg',
     language: 'French',
     country: 'France',
     accessibility: 'PUBLIC',
@@ -33,7 +33,7 @@ const teamDetails: TeamDetail[] = [
     name: 'FotoMaatjes',
     description:
       'Welkom bij het nieuwe team, FotoMaatjes (Dutch speaking only). We zijn op zoek naar actieve spelers die deelnemen aan teamwedstrijden en er voor gaan, maar zien ook graag vriendelijke vibes.',
-    badge: '/images/photographer.png',
+    badge: '/images/portrait.jpg',
     language: 'Dutch',
     country: 'Belgium',
     accessibility: 'PRIVATE',
@@ -55,7 +55,7 @@ const teamDetails: TeamDetail[] = [
     name: 'Just Click & Capture',
     description:
       "I'm aiming to put together a team of Active Players. Let's come together and climb our way through the ranks. If you enter a match please be available at the end. Inactive members are not a fit.",
-    badge: '/images/studio.png',
+    badge: '/images/studio.jpg',
     language: 'English',
     country: 'United Kingdom',
     accessibility: 'PUBLIC',
@@ -77,7 +77,7 @@ const teamDetails: TeamDetail[] = [
     name: 'bare skin',
     description:
       "We are people who aren't afraid of bare skin. We enjoy the body just as much as the image. We take challenges seriously so only committed members will be kicked, unless a spot opens.",
-    badge: '/images/POTY.png',
+    badge: '/images/poty.jpg',
     language: 'English',
     country: 'Denmark',
     accessibility: 'PUBLIC',
@@ -121,7 +121,7 @@ const teamDetails: TeamDetail[] = [
     name: 'Color Pulse',
     description:
       'Bright, lively, and built to climb through contest ranks with a strong voting core and social energy.',
-    badge: '/images/exhibition.png',
+    badge: '/images/exhibition.jpg',
     language: 'Swedish',
     country: 'Sweden',
     accessibility: 'PUBLIC',

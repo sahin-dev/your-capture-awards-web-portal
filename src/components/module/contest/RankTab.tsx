@@ -145,7 +145,7 @@ const RankTab = ({ value, id }: { value: string; id: string }) => {
             />
           ) : (
             photoItems?.map((topPhoto: any, index: number) => {
-                const handlePhotoClick = () => {
+              const handlePhotoClick = () => {
                 const photosToSet = photoItems.map((p) => ({
                   id: p.userPhotoId ?? p.contestPhotoId ?? p.id,
                   url: p.url,
@@ -161,7 +161,8 @@ const RankTab = ({ value, id }: { value: string; id: string }) => {
                 const ownerIdForPhoto = topPhoto.photographer?.id ?? '';
                 const photoId = topPhoto.userPhotoId ?? topPhoto.contestPhotoId ?? topPhoto.id;
                 const ownerQuery = ownerIdForPhoto ? `&ownerId=${ownerIdForPhoto}` : '';
-                if (photoId) router.push(`/photo/${photoId}?source=contest&contest=${id}${ownerQuery}`);
+                if (photoId)
+                  router.push(`/photo/${photoId}?source=contest&contest=${id}${ownerQuery}`);
               };
 
               return (
@@ -179,7 +180,7 @@ const RankTab = ({ value, id }: { value: string; id: string }) => {
                       className="h-72 w-full rounded-xl object-cover transition-all duration-500 group-hover:brightness-60"
                     />
                   ) : (
-                    <div className="h-72 w-full rounded-xl bg-surface-secondary" />
+                    <div className="bg-surface-secondary h-72 w-full rounded-xl" />
                   )}
 
                   <div className="bg-overlay absolute top-2 left-2 rounded px-2 py-1 font-bold">
@@ -195,7 +196,8 @@ const RankTab = ({ value, id }: { value: string; id: string }) => {
                     className="absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100"
                     onClick={(e) => {
                       e.stopPropagation();
-                      const profileIdentifier = topPhoto?.photographer?.username || topPhoto?.photographer?.id || '';
+                      const profileIdentifier =
+                        topPhoto?.photographer?.username || topPhoto?.photographer?.id || '';
                       if (profileIdentifier) router.push(`/profile/${profileIdentifier}`);
                     }}
                   >
@@ -208,7 +210,7 @@ const RankTab = ({ value, id }: { value: string; id: string }) => {
                         className="bg-foreground mb-2 size-20 rounded-full object-cover"
                       />
                     ) : (
-                      <div className="mb-2 h-16 w-16 rounded-full bg-surface-secondary" />
+                      <div className="bg-surface-secondary mb-2 h-16 w-16 rounded-full" />
                     )}
                     <p className="font-semibold">{topPhoto?.photographer?.fullName}</p>
                     <p className="text-background-2-50">{topPhoto?.photographer?.location}</p>
@@ -338,21 +340,21 @@ const RankTab = ({ value, id }: { value: string; id: string }) => {
                       .sort((a, b) => b?.voteCount - a?.voteCount)
                       .map((photo: any, index: any) => {
                         const handlePhotoClick = () => {
-                            const photosToSet = rankPhotographer.photos.map((p: any) => ({
-                              id: p?.userPhotoId ?? p?.photo?.id ?? p?.id,
-                              url: p?.url ?? p?.photo?.url ?? null,
-                              userId: rankPhotographer.user?.id,
-                              title: p?.title ?? p?.photo?.title ?? '',
-                              views: 0,
-                              likes: 0,
-                              totalVotes: p?.voteCount ?? 0,
-                            }));
-                            dispatch(setSwiperPhotos(photosToSet));
-                            const targetId = photo?.userPhotoId ?? photo?.photo?.id ?? photo?.id;
-                            router.push(
-                              `/photo/${targetId}?source=contest&contest=${id}&ownerId=${rankPhotographer.user?.id}`,
-                            );
-                          };
+                          const photosToSet = rankPhotographer.photos.map((p: any) => ({
+                            id: p?.userPhotoId ?? p?.photo?.id ?? p?.id,
+                            url: p?.url ?? p?.photo?.url ?? null,
+                            userId: rankPhotographer.user?.id,
+                            title: p?.title ?? p?.photo?.title ?? '',
+                            views: 0,
+                            likes: 0,
+                            totalVotes: p?.voteCount ?? 0,
+                          }));
+                          dispatch(setSwiperPhotos(photosToSet));
+                          const targetId = photo?.userPhotoId ?? photo?.photo?.id ?? photo?.id;
+                          router.push(
+                            `/photo/${targetId}?source=contest&contest=${id}&ownerId=${rankPhotographer.user?.id}`,
+                          );
+                        };
 
                         return (
                           <div
