@@ -1,7 +1,7 @@
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/utils/cn';
 import type { Metadata } from 'next';
-import { Kumbh_Sans } from 'next/font/google';
+import { Kumbh_Sans, Playfair_Display } from 'next/font/google';
 import AuthRedirectHandler from '../components/module/auth/AuthRedirectHandler';
 import StoreModal from '../components/module/store/StoreModal';
 import CookieConsent from '../components/CookieConsent';
@@ -15,6 +15,13 @@ import '../styles/globals.css';
 const kumbhSans = Kumbh_Sans({
   variable: '--font-kumbh-sans',
   subsets: ['latin'],
+});
+
+// Editorial display face for marketing headlines. Kumbh Sans stays the UI face.
+const playfair = Playfair_Display({
+  variable: '--font-playfair',
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://yourcaptureawards.com';
@@ -63,14 +70,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    // Font variables live on <html> so :root can resolve them — --font-editorial
+    // in globals.css is declared at :root and would otherwise be invalid.
+    <html
+      lang="en"
+      className={cn('dark', kumbhSans.variable, playfair.variable)}
+      suppressHydrationWarning
+    >
       <body
         suppressHydrationWarning
-        className={cn(
-          'bg-background text-foreground antialiased',
-          kumbhSans.className,
-          kumbhSans.variable,
-        )}
+        className={cn('bg-background text-foreground antialiased', kumbhSans.className)}
       >
         <ThemeProvider>
           <ReduxProvider>

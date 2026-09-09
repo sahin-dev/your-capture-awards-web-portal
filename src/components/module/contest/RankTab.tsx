@@ -320,14 +320,14 @@ const RankTab = ({ value, id }: { value: string; id: string }) => {
                       <div className="bg-border -mr-4 flex h-10 min-w-0 flex-1 items-center justify-end rounded-l-full px-2 sm:-mr-5 sm:h-12">
                         <div
                           className={cn(
-                            'bg-primary flex h-8 max-w-full items-center rounded-l-full px-3 text-sm whitespace-nowrap sm:h-9 sm:text-base',
+                            'bg-primary text-primary-foreground flex h-8 max-w-full items-center rounded-l-full px-3 text-sm whitespace-nowrap sm:h-9 sm:text-base',
                           )}
                           style={{ width: `${progress}%` }}
                         >
                           {rankPhotographer?.totalVotes} Votes
                         </div>
                       </div>
-                      <div className="bg-primary flex size-14 min-w-14 items-center justify-center rounded-full text-lg font-bold shadow sm:size-20 sm:min-w-20 sm:text-2xl">
+                      <div className="bg-primary text-primary-foreground flex size-14 min-w-14 items-center justify-center rounded-full text-lg font-bold shadow sm:size-20 sm:min-w-20 sm:text-2xl">
                         #{index + 1}
                       </div>
                     </div>

@@ -214,7 +214,7 @@ export default function NotificationModal() {
                     'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold',
                     notification.isRead
                       ? 'bg-surface-secondary text-foreground'
-                      : 'bg-primary text-white',
+                      : 'bg-primary text-primary-foreground',
                   )}
                 >
                   {typeLabel[notification.type].slice(0, 1)}

@@ -65,9 +65,9 @@ export const AddImagePopover: React.FC<Props> = ({ editor, className }) => {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && addImageByUrl()}
-            className="border-border bg-surface-secondary text-primary-foreground placeholder:text-placeholder-foreground"
+            className="border-border bg-surface-secondary text-foreground placeholder:text-placeholder-foreground"
           />
-          <Button onClick={addImageByUrl} className="text-primary-foreground">
+          <Button onClick={addImageByUrl} className="text-foreground">
             Add
           </Button>
         </div>

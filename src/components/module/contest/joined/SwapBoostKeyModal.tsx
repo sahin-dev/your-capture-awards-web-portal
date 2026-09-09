@@ -203,7 +203,7 @@ export default function SwapBoostKeyModal() {
             </span>{' '}
             0
           </span>
-          <span className="bg-primary text-foreground rounded p-1">
+          <span className="bg-primary text-primary-foreground rounded p-1">
             <FaPlus />
           </span>
         </button>
@@ -215,7 +215,7 @@ export default function SwapBoostKeyModal() {
           <span className="flex items-center gap-2">
             <IoKeyOutline className="size-5" /> 0
           </span>
-          <span className="bg-primary text-foreground rounded p-1">
+          <span className="bg-primary text-primary-foreground rounded p-1">
             <FaPlus />
           </span>
         </button>
@@ -226,7 +226,7 @@ export default function SwapBoostKeyModal() {
           <span className="flex items-center gap-2">
             <AiOutlineThunderbolt className="size-5" /> 0
           </span>
-          <span className="bg-primary text-foreground rounded p-1">
+          <span className="bg-primary text-primary-foreground rounded p-1">
             <FaPlus />
           </span>
         </button>
@@ -288,7 +288,7 @@ export default function SwapBoostKeyModal() {
                     >
                       <h1>{swap.title}</h1>
                       <p>{swap.amount} Swap</p>
-                      <button className="text-foreground bg-primary rounded-sm px-5 py-2">
+                      <button className="text-primary-foreground bg-primary rounded-sm px-5 py-2">
                         {swap.price} {swap.currency}
                       </button>
                     </div>
@@ -321,7 +321,7 @@ export default function SwapBoostKeyModal() {
                     >
                       <h1>{boost.title}</h1>
                       <p>{boost.amount} Boost</p>
-                      <button className="text-foreground bg-primary rounded-sm px-5 py-2">
+                      <button className="text-primary-foreground bg-primary rounded-sm px-5 py-2">
                         {boost.price} {boost.currency}
                       </button>
                     </div>
@@ -351,7 +351,7 @@ export default function SwapBoostKeyModal() {
                     >
                       <h1>{key.title}</h1>
                       <p>{key.amount} Key</p>
-                      <button className="text-foreground bg-primary rounded-sm px-5 py-2">
+                      <button className="text-primary-foreground bg-primary rounded-sm px-5 py-2">
                         {key.price} {key.currency}
                       </button>
                     </div>

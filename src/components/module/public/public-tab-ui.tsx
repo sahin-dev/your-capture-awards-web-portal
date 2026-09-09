@@ -107,17 +107,17 @@ export function PhotoCard({
         type="button"
         onClick={handleToggleLike}
         disabled={isLiking}
-        className="border-border-subtle bg-overlay text-primary-foreground hover:bg-overlay absolute top-3 right-3 z-10 cursor-pointer rounded-full border p-2 backdrop-blur-xs transition duration-200 select-none disabled:cursor-wait disabled:opacity-70"
+        className="border-border-subtle bg-overlay text-foreground hover:bg-overlay absolute top-3 right-3 z-10 cursor-pointer rounded-full border p-2 backdrop-blur-xs transition duration-200 select-none disabled:cursor-wait disabled:opacity-70"
       >
         {isLiking ? (
-          <Loader2 className="text-primary-foreground size-4.5 animate-spin" />
+          <Loader2 className="text-foreground size-4.5 animate-spin" />
         ) : (
           <Heart
             className={cn(
               'size-4.5 transition duration-200',
               liked
                 ? 'scale-110 fill-rose-500 text-rose-500'
-                : 'text-primary-foreground hover:text-rose-400',
+                : 'text-foreground hover:text-rose-400',
             )}
           />
         )}
@@ -159,7 +159,7 @@ export function TabSectionHeader({
     <div className="mb-6 flex justify-between gap-3">
       <div>
         <h3 className="text-foreground font-medium uppercase">{title}</h3>
-        {countLabel ? <p className="text-primary-foreground/45 text-xs">{countLabel}</p> : null}
+        {countLabel ? <p className="text-foreground/45 text-xs">{countLabel}</p> : null}
       </div>
       {action ? <div>{action}</div> : null}
     </div>
@@ -177,14 +177,14 @@ export function TabErrorState({
 }) {
   return (
     <section className="container py-10">
-      <div className="border-destructive/20 bg-destructive/10 text-primary-foreground rounded-2xl border p-6">
+      <div className="border-destructive/20 bg-destructive/10 text-destructive-foreground rounded-2xl border p-6">
         <p className="font-semibold">{title}</p>
-        <p className="text-primary-foreground/75 mt-1 text-sm">{description}</p>
+        <p className="text-foreground/75 mt-1 text-sm">{description}</p>
         {onRetry ? (
           <button
             type="button"
             onClick={onRetry}
-            className="bg-destructive text-primary-foreground mt-4 rounded-md px-4 py-2 text-sm font-semibold"
+            className="bg-destructive text-destructive-foreground mt-4 rounded-md px-4 py-2 text-sm font-semibold"
           >
             Retry
           </button>

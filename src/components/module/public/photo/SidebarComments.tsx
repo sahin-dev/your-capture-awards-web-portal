@@ -440,7 +440,7 @@ function CommentBubble({
                   <Button
                     type="submit"
                     size="sm"
-                    className="bg-info text-primary-foreground hover:bg-info/90 h-7 px-3 text-xs font-bold"
+                    className="bg-info text-info-foreground hover:bg-info/90 h-7 px-3 text-xs font-bold"
                     disabled={!editText.trim() || isSaving}
                   >
                     {isSaving ? 'Saving…' : 'Save'}
@@ -524,7 +524,7 @@ function CommentBubble({
                 <Button
                   type="submit"
                   size="sm"
-                  className="bg-info text-primary-foreground hover:bg-info/90 h-7 px-3 text-xs font-bold"
+                  className="bg-info text-info-foreground hover:bg-info/90 h-7 px-3 text-xs font-bold"
                   disabled={!replyText.trim() || isSubmittingReply}
                 >
                   {isSubmittingReply ? 'Replying…' : 'Reply'}

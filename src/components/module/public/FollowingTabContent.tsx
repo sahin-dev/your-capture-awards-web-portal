@@ -98,11 +98,11 @@ function PersonCard({ item }: { item: any }) {
 
           <div className="min-w-0 flex-1 pt-2">
             {isMe ? (
-              <span className="text-primary-foreground block truncate font-semibold">{name}</span>
+              <span className="text-foreground block truncate font-semibold">{name}</span>
             ) : (
               <Link
                 href={`/profile/${followingId}`}
-                className="hover:text-primary text-primary-foreground block truncate font-semibold transition"
+                className="hover:text-primary text-foreground block truncate font-semibold transition"
               >
                 {name}
               </Link>
@@ -129,7 +129,7 @@ function PersonCard({ item }: { item: any }) {
             )}
           >
             {isToggling ? (
-              <Loader2 className="text-primary-foreground size-4 animate-spin" />
+              <Loader2 className="text-foreground size-4 animate-spin" />
             ) : following ? (
               'Following'
             ) : (

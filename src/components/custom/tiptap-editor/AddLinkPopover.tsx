@@ -69,14 +69,14 @@ export const AddLinkPopover: React.FC<Props> = ({ editor, className }) => {
         <div className="flex gap-2">
           <Button
             onClick={setLink}
-            className="bg-success text-primary-foreground hover:bg-success/90"
+            className="bg-success text-success-foreground hover:bg-success/90"
           >
             {editor?.isActive('link') ? 'Update' : 'Add'}
           </Button>
           {editor?.isActive('link') && (
             <Button
               onClick={unsetLink}
-              className="bg-destructive text-primary-foreground hover:bg-destructive/90 p-2"
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90 p-2"
             >
               <Link2Off className="size-4" />
             </Button>

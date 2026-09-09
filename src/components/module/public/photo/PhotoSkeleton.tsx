@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn';
 
 export function PhotoSkeleton({ isSidebarOpen = true }: { isSidebarOpen?: boolean }) {
   return (
-    <div className="bg-background text-primary-foreground relative flex h-screen overflow-hidden lg:flex-row">
+    <div className="bg-background text-foreground relative flex h-screen overflow-hidden lg:flex-row">
       {/* Left: Photo placeholder — full width/height, mirrors the real section */}
       <section className="bg-surface relative flex h-full w-full flex-1 animate-pulse items-center justify-center">
         <div className="border-border size-20 animate-spin rounded-full border-4 border-t-zinc-600" />

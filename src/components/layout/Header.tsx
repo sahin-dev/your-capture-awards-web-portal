@@ -13,7 +13,7 @@ import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { AiOutlineThunderbolt } from 'react-icons/ai';
 import { FaPlus } from 'react-icons/fa6';
 import { IoKeyOutline } from 'react-icons/io5';
@@ -31,7 +31,7 @@ const ResourceValue = ({
   className?: string;
 }) => {
   if (isLoading) return <Skeleton className={cn('bg-surface-secondary h-3 w-5', className)} />;
-  return <span>{value}</span>;
+  return <span className="tabular-nums">{value}</span>;
 };
 
 const Navbar = () => {
@@ -42,10 +42,30 @@ const Navbar = () => {
   });
   const [mounted, setMounted] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const pathname = usePathname();
   const stats = storeStats?.data;
 
+  // The landing hero sits under the header, so the bar starts transparent
+  // there and only picks up its surface once the page moves.
+  const overHero = pathname === '/';
+
   useLayoutEffect(() => setMounted(true), []);
+
+  const handleScroll = useCallback(() => {
+    const y = window.scrollY;
+    setScrolled(y > 24);
+
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    setProgress(scrollable > 0 ? Math.min(y / scrollable, 1) : 0);
+  }, []);
+
+  useEffect(() => {
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   // "/" keyboard shortcut to open search
   useEffect(() => {
@@ -69,15 +89,24 @@ const Navbar = () => {
 
   if (!mounted) return null;
 
+  const transparent = overHero && !scrolled;
+
   return (
     <>
-      <header className="bg-background border-border fixed top-0 right-0 left-0 z-50 border-b">
+      <header
+        className={cn(
+          'fixed top-0 right-0 left-0 z-50 border-b transition-all duration-500',
+          transparent
+            ? 'border-transparent bg-transparent'
+            : 'border-border bg-background/85 supports-[backdrop-filter]:bg-background/70 backdrop-blur-xl backdrop-saturate-150',
+        )}
+      >
         <nav className="container flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 min-[400px]:gap-3">
             <Sidebar />
-            <LogoName className="w-24 min-[360px]:w-32 min-[400px]:w-38" />
+            <LogoName className="w-24 transition-transform duration-300 hover:scale-[1.03] min-[360px]:w-32 min-[400px]:w-38" />
 
-            <ul className="font-kumbh ml-3 hidden flex-1 items-center justify-center gap-4 uppercase select-none lg:flex">
+            <ul className="font-kumbh ml-3 hidden flex-1 items-center justify-center gap-1 uppercase select-none lg:flex">
               {menuLinks.map((link, index) => {
                 const href = link.href;
                 const isActive =
@@ -89,13 +118,22 @@ const Navbar = () => {
                     <Link
                       href={isActive ? '#' : href}
                       className={cn(
-                        'hover:text-primary p-1 text-sm font-medium transition-colors',
+                        'group relative px-3 py-2 text-sm font-medium transition-colors duration-300',
                         isActive
                           ? 'text-primary pointer-events-none cursor-default'
                           : 'text-muted-foreground hover:text-foreground',
                       )}
                     >
                       {link?.name}
+
+                      {/* Underline grows from the centre on hover, and sits
+                          fully drawn on the active route. */}
+                      <span
+                        className={cn(
+                          'bg-primary absolute inset-x-3 bottom-1 h-px origin-center transition-transform duration-300 ease-out',
+                          isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
+                        )}
+                      />
                     </Link>
                   </li>
                 );
@@ -110,23 +148,23 @@ const Navbar = () => {
                   <button
                     type="button"
                     onClick={openStore}
-                    className="group bg-surface-secondary hover:bg-surface-tertiary flex h-8.5 items-stretch overflow-hidden rounded-md transition"
+                    className="group bg-surface-secondary hover:bg-surface-tertiary flex h-8.5 items-stretch overflow-hidden rounded-full transition-all duration-300 hover:-translate-y-px hover:shadow-md"
                     aria-label="Open store resources"
                   >
-                    <span className="text-foreground flex items-center px-2 text-sm">
+                    <span className="text-foreground flex items-center px-3 text-sm">
                       <span className="flex items-center gap-2" title="Charges">
                         <AiOutlineThunderbolt className="text-primary size-4" />
                         <ResourceValue isLoading={isStatsLoading} value={stats?.key ?? 0} />
                       </span>
 
-                      <span className="text-border-strong mx-3">|</span>
+                      <span className="bg-border-strong mx-3 h-3.5 w-px" />
 
                       <span className="flex items-center gap-2" title="Trades">
                         <MdOutlineCameraswitch className="text-primary size-4 rotate-90" />
                         <ResourceValue isLoading={isStatsLoading} value={stats?.swap ?? 0} />
                       </span>
 
-                      <span className="text-border-strong mx-3">|</span>
+                      <span className="bg-border-strong mx-3 h-3.5 w-px" />
 
                       <span className="flex items-center gap-2" title="Promotes">
                         <IoKeyOutline className="text-primary size-4" />
@@ -134,18 +172,18 @@ const Navbar = () => {
                       </span>
                     </span>
 
-                    <span className="bg-primary/90 text-primary-foreground group-hover:bg-primary flex shrink-0 items-center justify-center px-1.5 transition">
-                      <FaPlus className="size-3" />
+                    <span className="bg-primary/90 text-primary-foreground group-hover:bg-primary flex shrink-0 items-center justify-center px-2 transition-colors">
+                      <FaPlus className="size-3 transition-transform duration-300 group-hover:rotate-90" />
                     </span>
                   </button>
 
                   <button
                     type="button"
                     onClick={openStore}
-                    className="group bg-surface-secondary hover:bg-surface-tertiary flex h-8.5 items-stretch overflow-hidden rounded-md transition"
+                    className="group bg-surface-secondary hover:bg-surface-tertiary flex h-8.5 items-stretch overflow-hidden rounded-full transition-all duration-300 hover:-translate-y-px hover:shadow-md"
                     aria-label="Open coin store"
                   >
-                    <span className="flex items-center gap-2 px-2">
+                    <span className="flex items-center gap-2 px-3">
                       <Image
                         src="/icons/ycw-coin.png"
                         alt="YCW Coin"
@@ -160,8 +198,8 @@ const Navbar = () => {
                       />
                     </span>
 
-                    <span className="bg-primary/90 text-primary-foreground group-hover:bg-primary flex shrink-0 items-center justify-center px-1.5 transition">
-                      <FaPlus className="size-3" />
+                    <span className="bg-primary/90 text-primary-foreground group-hover:bg-primary flex shrink-0 items-center justify-center px-2 transition-colors">
+                      <FaPlus className="size-3 transition-transform duration-300 group-hover:rotate-90" />
                     </span>
                   </button>
                 </div>
@@ -174,25 +212,26 @@ const Navbar = () => {
               <>
                 <Link
                   href="/signin"
-                  className="border-primary hover:border-primary/90 hover:text-foreground hidden rounded-sm border px-5 py-2 text-sm transition-colors lg:block"
+                  className="text-muted-foreground hover:text-foreground hidden rounded-full px-5 py-2 text-sm font-medium transition-colors duration-300 lg:block"
                 >
                   Login
                 </Link>
                 <Link
                   href="/signup"
-                  className="bg-primary border-primary hover:bg-primary/90 hover:border-primary/90 hidden rounded-sm border px-5 py-2 text-sm transition-colors lg:block"
+                  className="group bg-primary text-primary-foreground relative hidden overflow-hidden rounded-full px-6 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-px hover:shadow-lg lg:block"
                 >
-                  Register
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                  <span className="relative">Register</span>
                 </Link>
                 <Link
                   href="/signin"
-                  className="border-primary hover:border-primary/90 rounded-sm border px-2.5 py-2 text-xs transition-colors min-[400px]:px-4 min-[400px]:text-sm lg:hidden"
+                  className="border-border-strong hover:border-primary hover:text-primary rounded-full border px-3 py-1.5 text-xs font-medium transition-colors duration-300 min-[400px]:px-4 min-[400px]:text-sm lg:hidden"
                 >
                   Login
                 </Link>
                 <Link
                   href="/signup"
-                  className="bg-primary border-primary hover:bg-primary/90 hover:border-primary/90 rounded-sm border px-2.5 py-2 text-xs transition-colors min-[400px]:px-4 min-[400px]:text-sm lg:hidden"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors duration-300 min-[400px]:px-4 min-[400px]:text-sm lg:hidden"
                 >
                   Register
                 </Link>
@@ -200,6 +239,13 @@ const Navbar = () => {
             )}
           </div>
         </nav>
+
+        {/* Reading progress — absolutely positioned so header height is unchanged */}
+        <span
+          aria-hidden="true"
+          className="via-primary absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-transparent to-transparent transition-transform duration-150 ease-out"
+          style={{ transform: `scaleX(${progress})` }}
+        />
       </header>
 
       {/* Global Search Modal (rendered outside header to avoid z-index conflicts) */}

@@ -55,7 +55,7 @@ const ClosedContestCard = ({ contest }: { contest: any }) => {
         </Link>
 
         {/* Footer stats — absolute bottom, zero gap */}
-        <div className="text-primary-foreground absolute inset-x-0 bottom-0 z-10 flex items-center justify-between bg-zinc-950/90 py-2">
+        <div className="text-foreground absolute inset-x-0 bottom-0 z-10 flex items-center justify-between bg-zinc-950/90 py-2">
           {contest?.isMoneyContest && (
             <div className="border-primary flex h-12 flex-1 flex-col items-center justify-center border-r px-1">
               <p className="font-semibold">

@@ -137,8 +137,8 @@ export default function AvatarDialog() {
                 className="object-cover transition-all duration-300 group-hover:brightness-50"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                <FiEdit2 className="text-primary-foreground size-4 drop-shadow" />
-                <span className="text-primary-foreground text-[9px] font-semibold drop-shadow">
+                <FiEdit2 className="text-foreground size-4 drop-shadow" />
+                <span className="text-foreground text-[9px] font-semibold drop-shadow">
                   Edit
                 </span>
               </div>
@@ -153,12 +153,12 @@ export default function AvatarDialog() {
       </DialogTrigger>
 
       {/* ── Dialog ── */}
-      <DialogContent className="bg-background text-primary-foreground shadow-modal shadow-overlay ring-border-subtle gap-0 overflow-hidden border-0 p-0 ring-1 sm:max-w-sm">
+      <DialogContent className="bg-background text-foreground shadow-modal shadow-overlay ring-border-subtle gap-0 overflow-hidden border-0 p-0 ring-1 sm:max-w-sm">
         {/* ── Header ── */}
         <DialogHeader className="relative px-6 pt-6 pb-5">
           <div className="flex items-start justify-between">
             <div>
-              <DialogTitle className="text-primary-foreground text-[15px] font-semibold tracking-tight">
+              <DialogTitle className="text-foreground text-[15px] font-semibold tracking-tight">
                 {user?.avatar ? 'Update profile photo' : 'Add profile photo'}
               </DialogTitle>
               <p className="text-caption-foreground mt-1 text-[11px]">
@@ -218,8 +218,8 @@ export default function AvatarDialog() {
                         className="object-cover"
                       />
                       <div className="bg-overlay absolute inset-0 flex flex-col items-center justify-center gap-1.5 opacity-0 backdrop-blur-[2px] transition-opacity duration-200 group-hover/inner:opacity-100">
-                        <FiCamera className="text-primary-foreground size-5" />
-                        <span className="text-primary-foreground text-[11px] font-semibold">
+                        <FiCamera className="text-foreground size-5" />
+                        <span className="text-foreground text-[11px] font-semibold">
                           Change photo
                         </span>
                       </div>
@@ -230,7 +230,7 @@ export default function AvatarDialog() {
                         <FiUpload className="group-hover/inner:text-primary text-muted-foreground size-5 transition-colors" />
                       </div>
                       <div>
-                        <p className="text-muted-foreground group-hover/inner:text-primary-foreground text-[12px] font-medium transition-colors">
+                        <p className="text-muted-foreground group-hover/inner:text-foreground text-[12px] font-medium transition-colors">
                           Upload a photo
                         </p>
                         <p className="text-caption-foreground mt-0.5 text-[10px]">

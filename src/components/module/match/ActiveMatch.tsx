@@ -69,10 +69,10 @@ function ActiveMatch({
           />
           <div className="absolute inset-0 bg-linear-to-t from-zinc-950/80 via-zinc-950/40 to-zinc-950/10" />
           <div className="relative z-10 flex h-full flex-col items-center justify-center gap-3 p-4 text-center">
-            <h1 className="text-primary-foreground text-center text-xl leading-tight font-semibold">
+            <h1 className="text-foreground text-center text-xl leading-tight font-semibold">
               {match.theme}
             </h1>
-            <div className="text-primary-foreground flex flex-wrap items-center justify-center gap-2 text-xs">
+            <div className="text-foreground flex flex-wrap items-center justify-center gap-2 text-xs">
               <span className="bg-overlay inline-flex items-center gap-1 rounded-full px-3 py-1">
                 <Camera size={12} />
                 {match.photosRequired} photos

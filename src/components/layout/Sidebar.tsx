@@ -109,7 +109,7 @@ const Sidebar = () => {
                   <Link
                     href="/signup"
                     onClick={() => setOpen(false)}
-                    className="bg-primary border-primary hover:bg-primary/90 hover:border-primary/90 block rounded-sm border px-4 py-2 text-center text-sm transition-colors"
+                    className="bg-primary text-primary-foreground border-primary hover:bg-primary/90 hover:border-primary/90 block rounded-sm border px-4 py-2 text-center text-sm transition-colors"
                   >
                     Register
                   </Link>

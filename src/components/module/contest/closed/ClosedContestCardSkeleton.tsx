@@ -14,7 +14,7 @@ const ClosedContestCardSkeleton = () => {
           <Skeleton className="bg-surface-secondary mt-2 h-3 w-24 rounded-full" />
         </div>
 
-        <div className="text-primary-foreground absolute inset-x-0 bottom-0 flex items-center justify-between bg-zinc-950/90 px-2 py-2">
+        <div className="text-foreground absolute inset-x-0 bottom-0 flex items-center justify-between bg-zinc-950/90 px-2 py-2">
           <div className="border-primary flex h-12 flex-1 flex-col items-center justify-center border-r px-2">
             <Skeleton className="bg-surface-secondary h-4 w-24 rounded-full" />
             <Skeleton className="bg-surface-secondary mt-2 h-3 w-14 rounded-full" />

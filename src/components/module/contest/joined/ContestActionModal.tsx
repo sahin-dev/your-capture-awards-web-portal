@@ -645,7 +645,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
                     {contestTitle && <span className="text-primary">{contestTitle}</span>}
                     {!contestTitle && 'THIS CONTEST'}
                   </h1>
-                  <p className="text-primary-foreground/50 text-sm">
+                  <p className="text-foreground/50 text-sm">
                     Select where your replacement photo comes from
                   </p>
                 </div>
@@ -693,7 +693,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
                       ? 'Upload replacement photo'
                       : 'Select replacement photo'}
                   </h1>
-                  <p className="text-primary-foreground/50 text-sm">
+                  <p className="text-foreground/50 text-sm">
                     {swapSource === 'computer'
                       ? 'Choose a photo from your computer'
                       : 'Pick a fresh photo, or bring back one you traded out earlier'}
@@ -737,7 +737,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
                   swapSource === 'profile' && (
                     <div className="space-y-6">
                       <div className="space-y-2.5">
-                        <p className="text-primary-foreground/60 text-xs font-semibold tracking-wide uppercase">
+                        <p className="text-foreground/60 text-xs font-semibold tracking-wide uppercase">
                           Fresh uploads
                         </p>
                         <TradePhotoJustifiedPicker
@@ -752,7 +752,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
                       </div>
 
                       <div className="border-border-subtle space-y-2.5 border-t pt-5">
-                        <p className="text-primary-foreground/60 text-xs font-semibold tracking-wide uppercase">
+                        <p className="text-foreground/60 text-xs font-semibold tracking-wide uppercase">
                           Previously traded
                         </p>
                         <TradeHistoryPicker
@@ -799,7 +799,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
                   <h1 className="text-lg font-semibold sm:text-xl">
                     Select photo to replace
                   </h1>
-                  <p className="text-primary-foreground/50 text-sm">
+                  <p className="text-foreground/50 text-sm">
                     Choose one photo already uploaded to this contest
                   </p>
                 </div>
@@ -836,7 +836,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
                 <div className="grid gap-4 md:grid-cols-2">
                   {/* Left: selected contest photo */}
                   <div className="bg-surface-secondary flex flex-col items-center gap-2 rounded-xl p-4">
-                    <p className="text-primary-foreground/40 text-xs font-medium tracking-wider uppercase">
+                    <p className="text-foreground/40 text-xs font-medium tracking-wider uppercase">
                       Contest photo
                     </p>
                     <div className="flex w-full items-center justify-center overflow-hidden rounded-lg">
@@ -867,7 +867,7 @@ const ContestActionModal = forwardRef<ContestActionModalRef, ContestActionModalP
                     </div>
                   ) : (
                     <div className="bg-surface-secondary flex flex-col items-center gap-2 rounded-xl p-4">
-                      <p className="text-primary-foreground/40 text-xs font-medium tracking-wider uppercase">
+                      <p className="text-foreground/40 text-xs font-medium tracking-wider uppercase">
                         Replacement photo
                       </p>
                       <div className="flex w-full items-center justify-center overflow-hidden rounded-lg">

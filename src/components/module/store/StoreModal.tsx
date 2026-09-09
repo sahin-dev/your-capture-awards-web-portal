@@ -84,7 +84,7 @@ const BundleItems = ({ items }: { items: StoreProductItem[] }) => {
             key={item.type}
             className={`bg-linear-to-r ${itemGradient[item.type]} ring-border-subtle flex items-center justify-between rounded-md px-2 py-1 ring-1`}
           >
-            <span className="text-primary-foreground/75 flex items-center gap-1 text-[11px] font-medium">
+            <span className="text-foreground/75 flex items-center gap-1 text-[11px] font-medium">
               {itemIcon[item.type]}
               {itemLabel[item.type]}
             </span>
@@ -159,12 +159,12 @@ const CoinCard = ({
 
       {/* Info */}
       <div className="flex flex-1 flex-col items-center justify-center text-center">
-        <p className="text-primary-foreground/35 mb-0.5 text-[10px] font-medium tracking-widest uppercase">
+        <p className="text-foreground/35 mb-0.5 text-[10px] font-medium tracking-widest uppercase">
           {offer.title}
         </p>
         <div className="flex items-center gap-1">
           <Image src="/icons/ycw-coin.png" alt="YCW Coin" width={18} height={18} className="object-contain" />
-          <span className="text-primary-foreground text-lg font-semibold">
+          <span className="text-foreground text-lg font-semibold">
             {offer.quantity ?? 0}
           </span>
         </div>
@@ -175,7 +175,7 @@ const CoinCard = ({
         type="button"
         onClick={() => onPurchase(offer)}
         disabled={isPurchasing}
-        className="bg-primary/90 text-foreground hover:bg-primary mt-2 w-full rounded-sm py-1.5 text-xs font-bold transition-colors duration-150 disabled:opacity-50"
+        className="bg-primary/90 text-primary-foreground hover:bg-primary mt-2 w-full rounded-sm py-1.5 text-xs font-bold transition-colors duration-150 disabled:opacity-50"
       >
         {formatMoney(offer.amount, offer.currency)}
       </button>
@@ -196,7 +196,7 @@ const BundleCard = ({
   <div className="group border-border-subtle bg-surface-secondary relative flex h-52.5 w-43.75 shrink-0 flex-col overflow-hidden rounded-xl border">
     <div className="relative flex flex-1 flex-col p-3">
       {/* Title */}
-      <p className="text-primary-foreground mb-2 text-center text-[12px] font-semibold tracking-wide">
+      <p className="text-foreground mb-2 text-center text-[12px] font-semibold tracking-wide">
         {bundle.title}
       </p>
 
@@ -210,7 +210,7 @@ const BundleCard = ({
         type="button"
         onClick={() => onPurchase(bundle)}
         disabled={isPurchasing}
-        className="bg-primary/90 text-foreground hover:bg-primary mt-2 flex w-full items-center justify-center gap-1 rounded-sm py-1.5 text-xs font-bold transition-colors duration-150 disabled:opacity-50"
+        className="bg-primary/90 text-primary-foreground hover:bg-primary mt-2 flex w-full items-center justify-center gap-1 rounded-sm py-1.5 text-xs font-bold transition-colors duration-150 disabled:opacity-50"
       >
         <Image src="/icons/ycw-coin.png" alt="YCW Coin" width={12} height={12} className="object-contain" />
         {bundle.amount} YCW Coin
@@ -222,7 +222,7 @@ const BundleCard = ({
 /* ─── Section Header ──────────────────────────────────────────────── */
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle: string }) => (
   <div className="mb-4">
-    <h3 className="text-primary-foreground text-center text-xl font-bold tracking-tight">
+    <h3 className="text-foreground text-center text-xl font-bold tracking-tight">
       {title}
     </h3>
     <p className="text-muted-foreground text-center text-xs">{subtitle}</p>
@@ -430,8 +430,8 @@ const StoreModal = () => {
                 </CarouselContent>
                 {coinOffers.length > 3 && (
                   <>
-                    <CarouselPrevious className="border-border-subtle bg-surface-secondary text-muted-foreground hover:bg-surface-secondary hover:text-primary-foreground -left-3" />
-                    <CarouselNext className="border-border-subtle bg-surface-secondary text-muted-foreground hover:bg-surface-secondary hover:text-primary-foreground -right-3" />
+                    <CarouselPrevious className="border-border-subtle bg-surface-secondary text-muted-foreground hover:bg-surface-secondary hover:text-foreground -left-3" />
+                    <CarouselNext className="border-border-subtle bg-surface-secondary text-muted-foreground hover:bg-surface-secondary hover:text-foreground -right-3" />
                   </>
                 )}
               </Carousel>
@@ -471,8 +471,8 @@ const StoreModal = () => {
                 </CarouselContent>
                 {bundleOffers.length > 4 && (
                   <>
-                    <CarouselPrevious className="border-border-subtle bg-surface-secondary text-muted-foreground hover:bg-surface-secondary hover:text-primary-foreground -left-3" />
-                    <CarouselNext className="border-border-subtle bg-surface-secondary text-muted-foreground hover:bg-surface-secondary hover:text-primary-foreground -right-3" />
+                    <CarouselPrevious className="border-border-subtle bg-surface-secondary text-muted-foreground hover:bg-surface-secondary hover:text-foreground -left-3" />
+                    <CarouselNext className="border-border-subtle bg-surface-secondary text-muted-foreground hover:bg-surface-secondary hover:text-foreground -right-3" />
                   </>
                 )}
               </Carousel>

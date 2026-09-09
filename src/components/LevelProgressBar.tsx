@@ -139,7 +139,7 @@ export function LevelProgressBar({
             const reqText = nextLevel ? (
               <div className="w-56 space-y-2 text-left sm:w-72">
                 <div className="border-border-subtle flex items-center justify-between border-b pb-2">
-                  <div className="text-primary-foreground text-xs font-extrabold tracking-wide truncate">
+                  <div className="text-foreground text-xs font-extrabold tracking-wide truncate">
                     {nextLevel.levelName}
                   </div>
                   <span className="bg-surface-tertiary rounded-full px-2 py-1 text-[8px] font-bold tracking-wider uppercase">
@@ -183,13 +183,13 @@ export function LevelProgressBar({
                           <div
                             className={cn(
                               'truncate text-[11px] leading-5',
-                              complete ? 'text-primary-foreground font-semibold' : 'text-muted-foreground',
+                              complete ? 'text-foreground font-semibold' : 'text-muted-foreground',
                             )}
                           >
                             {label}
                           </div>
                           <div className="mt-0.5 flex items-center justify-between gap-2 text-[9px]">
-                            <span className={complete ? 'text-primary-foreground/70' : 'text-muted-foreground'}>
+                            <span className={complete ? 'text-foreground/70' : 'text-muted-foreground'}>
                               {displayCurrent} / {req.required}
                             </span>
                             <span className="text-muted-foreground">
@@ -236,15 +236,15 @@ export function LevelProgressBar({
                     onMouseLeave={handleLeave}
                   >
                     {isLockUnlocked ? (
-                      <div className="text-primary-foreground flex size-7 items-center justify-center">
+                      <div className="text-foreground flex size-7 items-center justify-center">
                         <Unlock className="size-4.5 stroke-[2.5]" />
                       </div>
                     ) : isBoundaryLock ? (
-                      <div className="border-border bg-surface-tertiary text-primary-foreground flex size-7 items-center justify-center rounded-full border shadow-md">
+                      <div className="border-border bg-surface-tertiary text-foreground flex size-7 items-center justify-center rounded-full border shadow-md">
                         <Lock className="size-3.5 stroke-[2.5]" />
                       </div>
                     ) : (
-                      <div className="border-border bg-surface text-primary-foreground flex size-7 items-center justify-center rounded-full border shadow-md">
+                      <div className="border-border bg-surface text-foreground flex size-7 items-center justify-center rounded-full border shadow-md">
                         <Lock className="size-3.5 stroke-[2.5]" />
                       </div>
                     )}

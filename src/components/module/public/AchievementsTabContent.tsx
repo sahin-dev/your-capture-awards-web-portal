@@ -275,7 +275,7 @@ function BadgeCell({
             ? 'bg-surface-secondary text-disabled-foreground'
             : active
               ? 'text-primary'
-              : 'text-primary-foreground',
+              : 'text-foreground',
         )}
       >
         x{count}

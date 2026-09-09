@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
     <section className="margin container py-6">
       <div>
         <div className="flex flex-col gap-2">
-          <h1 className="text-primary-foreground text-3xl font-semibold">Privacy Policy</h1>
+          <h1 className="text-foreground text-3xl font-semibold">Privacy Policy</h1>
           {policy?.updatedAt && (
             <p className="text-muted-foreground text-sm">
               Last updated on {new Date(policy.updatedAt).toLocaleDateString()}
@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
             Failed to load content. Please try again later.
           </div>
         ) : !policy?.content ? (
-          <div className="text-primary-foreground/50 py-10 text-center">No content available.</div>
+          <div className="text-foreground/50 py-10 text-center">No content available.</div>
         ) : (
           <TipTapViewer content={policy.content} className="text-foreground" />
         )}

@@ -10,17 +10,19 @@
 ============================================================ */
 
 @theme {
-  /* Brand */
-  --color-brand-50: #fff4eb;
-  --color-brand-100: #ffe2c8;
-  --color-brand-200: #ffc592;
-  --color-brand-300: #ffa55b;
-  --color-brand-400: #ff8a25;
-  --color-brand-500: #fc6600;
-  --color-brand-600: #e25c00;
-  --color-brand-700: #b94700;
-  --color-brand-800: #8f3906;
-  --color-brand-900: #6b2d0a;
+  /* Brand — champagne gold. Note this ramp is LIGHT at 500, so anything
+     sitting on a filled brand surface takes --primary-foreground (dark),
+     never the page foreground. */
+  --color-brand-50: #fdf9f1;
+  --color-brand-100: #f9efd9;
+  --color-brand-200: #f1dcb2;
+  --color-brand-300: #e8cd97;
+  --color-brand-400: #ddbd80;
+  --color-brand-500: #d4af6a;
+  --color-brand-600: #b8914f;
+  --color-brand-700: #8a6a2f;
+  --color-brand-800: #6b5226;
+  --color-brand-900: #4a391c;
 
   /* Status */
   --color-success-500: #22c55e;
@@ -28,20 +30,22 @@
   --color-danger-500: #c64031;
   --color-info-500: #3b82f6;
 
-  /* Zinc */
+  /* Neutrals — warm charcoal. The `zinc` names are kept because they are
+     referenced throughout the app; only the values are warmed so the ground
+     sits under champagne gold instead of the old cool blue-black. */
   --color-zinc-0: #ffffff;
-  --color-zinc-50: #fafafa;
-  --color-zinc-100: #f4f4f5;
-  --color-zinc-200: #e4e4e7;
-  --color-zinc-300: #d4d4d8;
-  --color-zinc-400: #a1a1aa;
-  --color-zinc-500: #71717a;
-  --color-zinc-600: #52525b;
-  --color-zinc-700: #3f3f46;
-  --color-zinc-800: #27272a;
-  --color-zinc-850: #1f1f23;
-  --color-zinc-900: #18181b;
-  --color-zinc-950: #09090b;
+  --color-zinc-50: #faf9f7;
+  --color-zinc-100: #f4f2ef;
+  --color-zinc-200: #e5e2dc;
+  --color-zinc-300: #d3cfc7;
+  --color-zinc-400: #a6a199;
+  --color-zinc-500: #77726a;
+  --color-zinc-600: #57534c;
+  --color-zinc-700: #403d37;
+  --color-zinc-800: #2a2824;
+  --color-zinc-850: #1f1e1b;
+  --color-zinc-900: #171614;
+  --color-zinc-950: #0d0c0b;
 }
 
 /* ============================================================
@@ -88,7 +92,9 @@
   --popover-foreground: var(--foreground);
 
   --primary: var(--color-brand-500);
-  --primary-foreground: var(--color-zinc-0);
+  /* Champagne gold is a light surface: content on it must be dark.
+     ~10:1 against --color-brand-500. */
+  --primary-foreground: var(--color-zinc-950);
   --primary-soft: color-mix(in oklab, var(--primary) 16%, var(--background));
   --primary-soft-foreground: color-mix(in oklab, var(--primary) 72%, var(--foreground));
 
@@ -225,6 +231,7 @@
   html {
     color-scheme: dark;
     scrollbar-gutter: stable;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -269,6 +276,28 @@
 }
 
 /* ============================================================
+   MOTION TOKENS
+   One vocabulary of easings and durations so every transition
+   in the product feels like it came from the same hand.
+============================================================ */
+
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 620ms;
+  --duration-reveal: 900ms;
+  --duration-cinematic: 1400ms;
+
+  /* Editorial display face, paired with the Kumbh Sans UI face */
+  --font-editorial: var(--font-playfair), 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* ============================================================
    UTILITIES
    Small project-wide helpers only.
 ============================================================ */
@@ -287,38 +316,95 @@
   }
 }
 
+/* Editorial display typeface — used for marketing headlines only. */
+@utility font-editorial {
+  font-family: var(--font-editorial);
+  font-optical-sizing: auto;
+}
+
+/* Small uppercase label that sits above a section headline. */
+@utility eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* Brand gradient applied to text. */
+@utility text-gradient-brand {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-brand-300) 0%,
+    var(--color-brand-500) 45%,
+    var(--color-brand-200) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Frosted panel used for floating chrome (header, cards over imagery). */
+@utility glass {
+  background: color-mix(in oklab, var(--color-zinc-950) 62%, transparent);
+  /* Prefixed first so the standard property wins the cascade after
+     minification, keeping the blur on Firefox as well as WebKit. */
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--color-zinc-50) 9%, transparent);
+}
+
+/* Hairline top-lit edge that makes dark surfaces read as physical. */
+@utility edge-light {
+  box-shadow:
+    inset 0 1px 0 0 color-mix(in oklab, var(--color-zinc-50) 8%, transparent),
+    var(--shadow-lg);
+}
+
+/* Slow zoom on the image inside, revealed on hover of the wrapper. */
+@utility media-zoom {
+  overflow: hidden;
+
+  & img {
+    transition: transform var(--duration-cinematic) var(--ease-out-expo);
+    will-change: transform;
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    transform: scale(1.06);
+  }
+}
+
 /* ============================================================
-   SCROLLBAR
-   Semantic, token-driven scrollbar treatment.
+   SCROLL REVEAL
+   Driven by <Reveal /> which flips data-visible when the element
+   enters the viewport. Variants are set through custom properties
+   so a single transition definition serves every direction.
 ============================================================ */
 
-.scrollbar-thin {
-  scrollbar-width: auto;
-  scrollbar-color: color-mix(in oklab, var(--muted-foreground) 85%, transparent) var(--surface);
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(var(--reveal-x, 0px), var(--reveal-y, 32px), 0)
+    scale(var(--reveal-scale, 1));
+  filter: blur(var(--reveal-blur, 0px));
+  transition:
+    opacity var(--duration-reveal) var(--ease-out-expo) var(--reveal-delay, 0ms),
+    transform var(--duration-reveal) var(--ease-out-expo) var(--reveal-delay, 0ms),
+    filter var(--duration-reveal) var(--ease-out-expo) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
 }
 
-.scrollbar-thin::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-track {
-  background: var(--surface);
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--muted-foreground) 80%, transparent);
-  border-radius: 9999px;
-  border: 2px solid var(--surface);
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in oklab, var(--foreground) 38%, var(--muted-foreground));
+[data-reveal][data-visible='true'] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0px);
 }
 
 /* ============================================================
    ANIMATIONS
-   Keep only globally reusable motion tokens.
+   Globally reusable motion. Anything single-use stays local to
+   its component.
 ============================================================ */
 
 @keyframes fadeIn {
@@ -343,10 +429,161 @@
   }
 }
 
+/* Slow cinematic drift across a hero photograph. */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.16) translate3d(-1.5%, -1.5%, 0);
+  }
+
+  100% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes scrollNudge {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes marqueeX {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @utility animate-fade-in {
   animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+@utility animate-ken-burns {
+  animation: kenBurns 28s var(--ease-in-out-soft) infinite;
+}
+
+@utility animate-float {
+  animation: floatY 6s var(--ease-in-out-soft) infinite;
+}
+
+@utility animate-shimmer {
+  animation: shimmerSweep 2.4s var(--ease-in-out-soft) infinite;
+}
+
+@utility animate-pulse-glow {
+  animation: pulseGlow 4s var(--ease-in-out-soft) infinite;
+}
+
+@utility animate-scroll-nudge {
+  animation: scrollNudge 2s var(--ease-in-out-soft) infinite;
+}
+
+@utility animate-marquee {
+  animation: marqueeX 40s linear infinite;
+}
+
 .animate-spin-hover:hover svg {
   animation: spinHover 1.2s ease-in-out infinite;
+}
+
+/* ============================================================
+   SWIPER
+   Bring the carousel chrome onto the brand palette.
+============================================================ */
+
+/* Swiper ships its own stylesheet in a later chunk, so drive it through the
+   documented custom properties and keep the shape rules at a specificity that
+   wins regardless of import order. Its default inactive bullet is black, which
+   is invisible on this dark surface. */
+:root {
+  --swiper-theme-color: var(--primary);
+  --swiper-pagination-color: var(--primary);
+  --swiper-pagination-bullet-inactive-color: var(--muted-foreground);
+  --swiper-pagination-bullet-inactive-opacity: 0.35;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+}
+
+.swiper .swiper-pagination-bullet {
+  transition:
+    width var(--duration-base) var(--ease-out-expo),
+    opacity var(--duration-base) var(--ease-out-expo),
+    background var(--duration-base) var(--ease-out-expo);
+}
+
+.swiper .swiper-pagination-bullet-active {
+  width: 24px;
+  border-radius: 9999px;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   Honour the OS setting without breaking any reveal-based layout.
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }

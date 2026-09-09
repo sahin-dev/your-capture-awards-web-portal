@@ -137,18 +137,18 @@ export default function AddCoverDialog() {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <button className="border-border bg-surface/90 text-primary-foreground hover:border-border hover:bg-surface-secondary inline-flex items-center gap-2 rounded-sm border px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-200 active:scale-[0.98]">
+        <button className="border-border bg-surface/90 text-foreground hover:border-border hover:bg-surface-secondary inline-flex items-center gap-2 rounded-sm border px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-200 active:scale-[0.98]">
           <FiEdit2 className="size-4" />
           <span>Change Banner</span>
         </button>
       </DialogTrigger>
 
-      <DialogContent className="bg-background text-primary-foreground shadow-modal ring-border-subtle gap-0 overflow-hidden border-0 p-0 ring-1 sm:max-w-2xl">
+      <DialogContent className="bg-background text-foreground shadow-modal ring-border-subtle gap-0 overflow-hidden border-0 p-0 ring-1 sm:max-w-2xl">
         {/* ── Header ── */}
         <DialogHeader className="relative px-7 pt-6 pb-5">
           <div className="flex items-start justify-between">
             <div>
-              <DialogTitle className="text-primary-foreground text-[16px] font-semibold tracking-tight">
+              <DialogTitle className="text-foreground text-[16px] font-semibold tracking-tight">
                 {user?.cover ? 'Update cover photo' : 'Add cover photo'}
               </DialogTitle>
               <p className="text-caption-foreground mt-1 text-[11px]">
@@ -212,9 +212,9 @@ export default function AddCoverDialog() {
                   {/* Change overlay */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                     <div className="bg-overlay flex h-10 w-10 items-center justify-center rounded-full backdrop-blur-sm">
-                      <FiUpload className="text-primary-foreground size-4" />
+                      <FiUpload className="text-foreground size-4" />
                     </div>
-                    <span className="text-primary-foreground text-[12px] font-semibold drop-shadow">
+                    <span className="text-foreground text-[12px] font-semibold drop-shadow">
                       Change cover photo
                     </span>
                   </div>
@@ -237,7 +237,7 @@ export default function AddCoverDialog() {
                         'text-[13px] font-medium transition-colors',
                         isDragging
                           ? 'text-primary'
-                          : 'text-muted-foreground group-hover:text-primary-foreground',
+                          : 'text-muted-foreground group-hover:text-foreground',
                       ].join(' ')}
                     >
                       {isDragging ? 'Drop your image here' : 'Upload a cover photo'}

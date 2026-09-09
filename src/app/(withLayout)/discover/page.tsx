@@ -76,7 +76,7 @@ export default function DiscoverPage() {
         />
         <div className="from-background via-background/20 absolute inset-0 bg-linear-to-t to-transparent" />
         <div className="relative z-10 max-w-4xl px-4 text-center">
-          <h1 className="font-kumbh text-primary-foreground text-3xl font-bold tracking-tight text-balance drop-shadow-lg md:text-5xl lg:text-6xl">
+          <h1 className="font-kumbh text-foreground text-3xl font-bold tracking-tight text-balance drop-shadow-lg md:text-5xl lg:text-6xl">
             Discover Stunning Photography from Around the World
           </h1>
         </div>
@@ -151,7 +151,7 @@ export default function DiscoverPage() {
                         </AvatarFallback>
                       </Avatar>
                       <div className="min-w-0">
-                        <p className="text-primary-foreground truncate text-sm font-semibold drop-shadow">
+                        <p className="text-foreground truncate text-sm font-semibold drop-shadow">
                           {name}
                         </p>
                         {location && (
@@ -165,7 +165,7 @@ export default function DiscoverPage() {
 
                     {/* Bottom Info overlay (Votes count) */}
                     <div className="absolute inset-x-0 bottom-0 flex translate-y-2 transform items-center justify-between p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <div className="border-border-subtle bg-overlay text-primary-foreground flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs backdrop-blur-md">
+                      <div className="border-border-subtle bg-overlay text-foreground flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs backdrop-blur-md">
                         <span className="font-semibold">{item.voteCount ?? 0} Votes</span>
                       </div>
                     </div>

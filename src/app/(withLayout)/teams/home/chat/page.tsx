@@ -566,7 +566,7 @@ export default function TeamChatPage() {
               </AvatarFallback>
             </Avatar>
             <div className="min-w-0">
-              <p className="text-primary-foreground truncate text-sm font-semibold">
+              <p className="text-foreground truncate text-sm font-semibold">
                 {team.name || 'Team Chat'}
               </p>
               <p className="text-muted-foreground mt-0.5 flex items-center gap-1.5 text-xs">
@@ -731,7 +731,7 @@ export default function TeamChatPage() {
                                   </>
                                 )}
                                 {message.message && (
-                                  <p className="text-primary-foreground/85 text-sm">
+                                  <p className="text-foreground/85 text-sm">
                                     {message.message}
                                   </p>
                                 )}
@@ -746,11 +746,11 @@ export default function TeamChatPage() {
 
                     <div
                       className={cn(
-                        'text-primary-foreground/50 flex items-center gap-2 px-1 text-xs',
+                        'text-foreground/50 flex items-center gap-2 px-1 text-xs',
                         isMine ? 'justify-end' : 'justify-start',
                       )}
                     >
-                      <span className="text-primary-foreground/75 font-medium">{senderName}</span>
+                      <span className="text-foreground/75 font-medium">{senderName}</span>
                       <span>{timeFormatter.format(new Date(group.createdAt))}</span>
                     </div>
                   </div>
@@ -765,15 +765,15 @@ export default function TeamChatPage() {
           {pendingFile && (
             <div className="border-border-subtle bg-surface-secondary mb-3 flex min-w-0 items-center justify-between gap-3 rounded-xl border px-3 py-2 text-sm">
               <div className="min-w-0 flex-1">
-                <p className="text-primary-foreground truncate font-medium">{pendingFile.name}</p>
-                <p className="text-primary-foreground/50 text-xs">
+                <p className="text-foreground truncate font-medium">{pendingFile.name}</p>
+                <p className="text-foreground/50 text-xs">
                   {Math.round(pendingFile.size / 1024)} KB selected
                 </p>
               </div>
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-muted-foreground hover:text-primary-foreground"
+                className="text-muted-foreground hover:text-foreground"
                 onClick={() => setPendingFile(null)}
               >
                 Remove
@@ -793,7 +793,7 @@ export default function TeamChatPage() {
               type="button"
               size="icon"
               variant="ghost"
-              className="text-muted-foreground hover:bg-surface-secondary hover:text-primary-foreground size-10 shrink-0"
+              className="text-muted-foreground hover:bg-surface-secondary hover:text-foreground size-10 shrink-0"
               onClick={() => fileInputRef.current?.click()}
             >
               <ImagePlus className="size-4" />
@@ -804,7 +804,7 @@ export default function TeamChatPage() {
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 placeholder="Write a message to your team..."
-                className="focus-visible:ring-primary/40 border-border-subtle bg-surface-secondary text-primary-foreground placeholder:text-primary-foreground/35 h-11"
+                className="focus-visible:ring-primary/40 border-border-subtle bg-surface-secondary text-foreground placeholder:text-foreground/35 h-11"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
@@ -871,7 +871,7 @@ function MessageState({ isReady }: { isReady: boolean }) {
       <div className="bg-primary/10 border-primary/20 mx-auto flex size-14 items-center justify-center rounded-full border">
         <Send className="text-primary size-6" />
       </div>
-      <p className="text-primary-foreground mt-4 text-base font-semibold">
+      <p className="text-foreground mt-4 text-base font-semibold">
         {isReady ? 'No messages yet' : 'Connecting to chat'}
       </p>
       <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
@@ -963,7 +963,7 @@ function MatchFoundCard({ message }: { message: ChatMessage }) {
         </div>
 
         {(team1Name || team2Name) && (
-          <div className="text-primary-foreground absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-zinc-950/90 py-2.5 text-sm font-semibold">
+          <div className="text-foreground absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-zinc-950/90 py-2.5 text-sm font-semibold">
             <span className="max-w-[40%] truncate">{team1Name}</span>
             <span className="text-muted-foreground text-xs font-normal">vs</span>
             <span className="max-w-[40%] truncate">{team2Name}</span>

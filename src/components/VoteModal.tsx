@@ -344,7 +344,7 @@ const VoteModal = forwardRef<VoteModalRef, VoteModalProps>(({ id }, ref) => {
           <button
             onClick={handleSubmit}
             disabled={voteLoading}
-            className="bg-primary text-foreground hover:bg-primary/90 absolute right-5 bottom-5 rounded px-5 py-2 font-medium uppercase shadow-lg transition disabled:opacity-60"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 absolute right-5 bottom-5 rounded px-5 py-2 font-medium uppercase shadow-lg transition disabled:opacity-60"
           >
             {voteLoading ? 'Submitting...' : 'SUBMIT VOTES'}
           </button>
