@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { AlertTriangle, Loader2, MapPin } from 'lucide-react';
+import { AlertTriangle, Loader2, MapPin, Vote } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
@@ -163,12 +163,9 @@ export function PublicProfilePage({ isOwn = false, userId }: Props) {
     data: ownPhotosData,
     isLoading: isOwnPhotosLoading,
     isFetching: isOwnPhotosFetching,
-  } = useGetPhotosQuery(
-    { page: photoPage, limit: 20 },
-    {
-      skip: !isOwn,
-    },
-  );
+  } = useGetPhotosQuery({ page: photoPage, limit: 20 }, {
+    skip: !isOwn,
+  });
 
   // 2. Fetch Profile, Stats and Photos for Other User Profile
   const {
@@ -234,14 +231,14 @@ export function PublicProfilePage({ isOwn = false, userId }: Props) {
     !isOwn &&
     Boolean(
       (currentUserId && userId === currentUserId) ||
-      (currentUsername && userId === currentUsername),
+        (currentUsername && userId === currentUsername),
     );
   const isCurrentUserProfile =
     isOwn ||
     isRouteCurrentUser ||
     Boolean(
       (currentUserId && profileUserId && currentUserId === profileUserId) ||
-      (currentUsername && profileUsername && currentUsername === profileUsername),
+        (currentUsername && profileUsername && currentUsername === profileUsername),
     );
 
   // Resolved joined team: for own profile from currentUser, for public from API data
@@ -285,6 +282,12 @@ export function PublicProfilePage({ isOwn = false, userId }: Props) {
     (profile?.firstName && profile?.lastName ? `${profile.firstName} ${profile.lastName}` : '') ||
     profile?.name ||
     'Name not found';
+
+  // Votes this user's photos received across every contest they participated in.
+  const totalVotes = useMemo(
+    () => (stats as any)?.totalVotes ?? (profile as any)?.totalVotes ?? 0,
+    [stats, profile],
+  );
 
   const tabs = useMemo(() => {
     const list: TabConfig[] = [
@@ -505,8 +508,34 @@ export function PublicProfilePage({ isOwn = false, userId }: Props) {
               </div>
             </div>
 
-            {/* Right side: Scrollable Modern Tabs Box */}
-            <div className="w-full overflow-hidden lg:w-auto">
+            {/* Right side: Total votes + Scrollable Modern Tabs Box */}
+            <div className="flex w-full items-center gap-3 overflow-hidden lg:w-auto">
+              {/* Total votes received across all participated contests */}
+              {isLoading && !stats ? (
+                <div className="border-border bg-surface/30 flex h-12 shrink-0 animate-pulse items-center gap-2.5 rounded-sm border px-4 shadow-md">
+                  <div className="bg-surface-secondary size-5 rounded" />
+                  <div className="flex flex-col gap-1.5">
+                    <div className="bg-surface-secondary h-4 w-10 rounded" />
+                    <div className="bg-surface-secondary h-2 w-16 rounded" />
+                  </div>
+                </div>
+              ) : (
+                <div
+                  title="Total votes received across all contests"
+                  className="border-border bg-surface/30 flex h-12 shrink-0 items-center gap-2.5 rounded-sm border px-4 shadow-md"
+                >
+                  <Vote className="text-primary size-5 shrink-0" />
+                  <div className="flex flex-col items-start justify-center">
+                    <span className="text-foreground text-sm leading-tight font-bold">
+                      {Number(totalVotes).toLocaleString()}
+                    </span>
+                    <span className="text-muted-foreground text-[10px] font-semibold tracking-wider whitespace-nowrap uppercase">
+                      Total Votes
+                    </span>
+                  </div>
+                </div>
+              )}
+
               <div className="divide-border border-border bg-surface/30 flex h-12 items-center divide-x overflow-x-auto rounded-sm border shadow-md">
                 {isLoading && !stats
                   ? Array.from({ length: isOwn ? 5 : 4 }).map((_, idx) => (

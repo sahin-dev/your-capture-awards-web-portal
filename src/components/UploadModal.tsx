@@ -13,6 +13,7 @@ import { useGetStoreStatsQuery } from '@/store/apis/storeApi';
 import { PhotoToContestPayload } from '@/store/types/contestTypes';
 import { compressImage } from '@/utils/compressImage';
 import { resolveImageUrl } from '@/utils/resolveImageUrl';
+import { labels, totalLevels } from '@/utils/valueToExposureLabel';
 import { ArrowLeft, UploadCloud } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -168,6 +169,42 @@ function ProfilePhotoJustifiedPicker({
           })}
         </div>
       ))}
+    </div>
+  );
+}
+
+function InitialExposureMeter() {
+  return (
+    <div className="border-border bg-surface-secondary/70 space-y-3 rounded-xl border p-4">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
+            Initial Exposure
+          </p>
+          <p className="text-foreground text-sm font-medium">Starts at 0%</p>
+        </div>
+        <span className="border-border bg-background text-muted-foreground rounded-full border px-3 py-1 text-xs font-semibold">
+          Level 0
+        </span>
+      </div>
+
+      <div className="space-y-1.5">
+        <div className="text-caption-foreground flex justify-between text-[10px]">
+          {labels.map((label, index) => (
+            <span key={`${label || 'gap'}-${index}`}>{label}</span>
+          ))}
+        </div>
+        <div className="flex gap-1">
+          {Array.from({ length: totalLevels }).map((_, index) => (
+            <div key={index} className="bg-surface-tertiary h-2 flex-1 rounded" />
+          ))}
+        </div>
+      </div>
+
+      <p className="text-muted-foreground text-xs leading-relaxed">
+        New contest entries begin with no exposure boost. Voting activity and Charge can raise this
+        meter after you join.
+      </p>
     </div>
   );
 }
@@ -456,6 +493,8 @@ const UploadModal = forwardRef<UploadModalRef, UploadModalProps>(
 
                 <TipTapViewer content={description} className="max-h-60 min-h-28 overflow-y-auto" />
               </div>
+
+              {type === 'join' && <InitialExposureMeter />}
 
               {/* footer */}
               <div className="border-border-subtle flex items-center justify-between gap-5 border-t-[0.5px] pt-5">

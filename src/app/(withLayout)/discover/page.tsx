@@ -9,8 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import type { DiscoverPhotoItem } from '@/store/types/discoverTypes';
 
 const LIMIT = 12;
-const HERO_BANNER =
-  'https://photos.gurushots.com/unsafe/2000x0/4a0728f5e918c8cc5b910bf98510198b/3_7c9e22eeb15a0276c78d91db5f020b6d.jpg';
+const HERO_BANNER = '/images/hero.jpg';
 
 function getInitials(name: string) {
   return (

@@ -16,7 +16,7 @@ import { useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FaGoogle } from 'react-icons/fa';
-import { IoCheckbox, IoCheckboxOutline } from 'react-icons/io5';
+import { IoCheckboxOutline } from 'react-icons/io5';
 import { toast } from 'sonner';
 
 const AuthForm = ({ type = 'signin' }: { type: 'signin' | 'signup' }) => {
@@ -181,7 +181,7 @@ const AuthForm = ({ type = 'signin' }: { type: 'signin' | 'signup' }) => {
           className="text-foreground flex items-center gap-2 text-sm font-medium select-none"
         >
           {rememberMe ? (
-            <IoCheckbox className="text-primary size-6" />
+            <span className="border-primary inline-block size-6 rounded-[5px] border-2" />
           ) : (
             <IoCheckboxOutline className="text-primary size-6" />
           )}
@@ -303,7 +303,7 @@ const AuthForm = ({ type = 'signin' }: { type: 'signin' | 'signup' }) => {
           <input type="checkbox" id="agree" className="sr-only" {...signupForm.register('agree')} />
           <span className="mt-0.5 shrink-0">
             {agreeValue ? (
-              <IoCheckbox className="text-primary size-5" />
+              <span className="border-primary inline-block size-5 rounded-[4px] border-2" />
             ) : (
               <IoCheckboxOutline className="text-primary size-5" />
             )}

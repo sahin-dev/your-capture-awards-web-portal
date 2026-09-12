@@ -74,7 +74,7 @@ export function DetailsTab() {
           <div className="border-border flex size-24 items-center justify-center rounded-full border">
             <IconPlaceholder name="aperture" />
           </div>
-          <p className="font-medium">GuruShots team</p>
+          <p className="font-medium">Host team</p>
           <Button size="sm" className="px-10">
             Follow
           </Button>
@@ -82,15 +82,13 @@ export function DetailsTab() {
 
         <div className="flex-1 space-y-3">
           <h2 className="text-xl">
-            <span className="text-primary font-bold">SuperStar photographer</span> challenge
+            <span className="text-primary font-bold">Open theme</span> contest
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Are you the next SuperStar photographer? Ready to push your creative limits to the max
-            in this fresh open themed, action-packed challenge! Earn the top photographer position
-            to win an exclusive feature, showcasing one of your winning photos to millions of users
-            across the GuruShots network.
+            An open-theme round with no subject limits - bring whatever you shoot best. Place near
+            the top and your photo gets featured on the front page for the whole community to see.
           </p>
-          <p className="text-sm font-medium">Join our challenge and earn rewards!</p>
+          <p className="text-sm font-medium">Enter the contest and earn rewards!</p>
           <ul className="text-muted-foreground list-disc space-y-1.5 pl-5 text-sm">
             <li>Participation reward: 10 coins</li>
             <li>Elite level reward: 20 coins</li>
